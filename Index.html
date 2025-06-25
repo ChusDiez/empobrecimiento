@@ -1,1 +1,506 @@
+<!DOCTYPE html>
 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Empobrecimiento de España: Análisis Económico 2008-2024</title>
+    <meta name="description" content="Análisis exhaustivo del estancamiento económico español. PIB per cápita estancado, deuda triplicada y divergencia con Europa y USA.">
+    <meta name="keywords" content="economía España, crisis económica, deuda pública, PIB per cápita, análisis económico">
+    <meta property="og:title" content="El Empobrecimiento de España: Datos que no puedes ignorar">
+    <meta property="og:description" content="PIB estancado + Deuda triplicada = España en declive. Análisis con datos oficiales.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #0a0a0a;
+        color: #e0e0e0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hero {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        padding: 60px 20px;
+        text-align: center;
+        border-bottom: 1px solid #333;
+    }
+    
+    .hero h1 {
+        font-size: 3.5em;
+        color: #ff6b6b;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        line-height: 1.2;
+    }
+    
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2.5em;
+        }
+    }
+    
+    .hero-subtitle {
+        font-size: 1.4em;
+        color: #feca57;
+        margin-bottom: 30px;
+        font-style: italic;
+    }
+    
+    .key-stat {
+        display: inline-block;
+        margin: 10px 20px;
+        padding: 15px 25px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .key-stat-value {
+        font-size: 2em;
+        font-weight: bold;
+        color: #ff6b6b;
+    }
+    
+    .key-stat-label {
+        font-size: 0.9em;
+        color: #a0a0a0;
+        margin-top: 5px;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        flex: 1;
+    }
+    
+    .intro-text {
+        text-align: center;
+        margin-bottom: 60px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .intro-text p {
+        font-size: 1.2em;
+        line-height: 1.8;
+        color: #d0d0d0;
+        margin-bottom: 20px;
+    }
+    
+    .analysis-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+    
+    @media (max-width: 900px) {
+        .analysis-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .analysis-card {
+        background: #1a1a1a;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .analysis-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    }
+    
+    .analysis-card.primary {
+        border-color: #ff6b6b;
+    }
+    
+    .analysis-card.secondary {
+        border-color: #4dabf7;
+    }
+    
+    .card-header {
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .card-number {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #ff6b6b;
+        color: #fff;
+        border-radius: 50%;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    
+    .analysis-card.secondary .card-number {
+        background: #4dabf7;
+    }
+    
+    .card-title {
+        font-size: 1.8em;
+        color: #fff;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    .card-subtitle {
+        color: #a0a0a0;
+        font-size: 1.1em;
+    }
+    
+    .card-content {
+        padding: 30px;
+    }
+    
+    .card-content p {
+        line-height: 1.7;
+        color: #d0d0d0;
+        margin-bottom: 20px;
+    }
+    
+    .highlights {
+        list-style: none;
+        margin: 20px 0;
+    }
+    
+    .highlights li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .highlights li:last-child {
+        border-bottom: none;
+    }
+    
+    .highlight-icon {
+        font-size: 1.5em;
+    }
+    
+    .view-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 40px;
+        background: #ff6b6b;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .analysis-card.secondary .view-button {
+        background: #4dabf7;
+    }
+    
+    .view-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    }
+    
+    .analysis-card.secondary .view-button:hover {
+        box-shadow: 0 10px 30px rgba(77, 171, 247, 0.4);
+    }
+    
+    .quote-section {
+        background: #1a1a1a;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 60px 0;
+        border-left: 4px solid #feca57;
+    }
+    
+    .quote {
+        font-size: 1.5em;
+        font-style: italic;
+        color: #feca57;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    .quote-author {
+        color: #a0a0a0;
+        font-size: 1.1em;
+    }
+    
+    .footer {
+        background: #0a0a0a;
+        border-top: 1px solid #333;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    
+    .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .source-note {
+        color: #888;
+        font-size: 0.9em;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+    
+    .share-section {
+        margin-top: 30px;
+    }
+    
+    .share-title {
+        color: #d0d0d0;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+    }
+    
+    .share-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .share-button {
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #e0e0e0;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95em;
+    }
+    
+    .share-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    .warning-banner {
+        background: rgba(255, 107, 107, 0.1);
+        border: 1px solid rgba(255, 107, 107, 0.3);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 40px 0;
+        text-align: center;
+    }
+    
+    .warning-banner p {
+        color: #ff6b6b;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="hero">
+        <h1>El Empobrecimiento de España</h1>
+        <p class="hero-subtitle">Análisis económico basado en datos oficiales (2008-2024)</p>
+
+```
+    <div class="key-stats">
+        <div class="key-stat">
+            <div class="key-stat-value">+3.2%</div>
+            <div class="key-stat-label">PIB per cápita real</div>
+        </div>
+        <div class="key-stat">
+            <div class="key-stat-value">+211%</div>
+            <div class="key-stat-label">Deuda per cápita</div>
+        </div>
+        <div class="key-stat">
+            <div class="key-stat-value">840€</div>
+            <div class="key-stat-label">Intereses por español/año</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="intro-text">
+        <p>
+            España vive una ilusión de prosperidad. Mientras el PIB nominal crece y los políticos celebran la "recuperación", 
+            los datos revelan una realidad devastadora: <strong>nos estamos empobreciendo en tiempo real</strong>.
+        </p>
+        <p>
+            Este análisis, basado exclusivamente en datos oficiales del INE, Banco de España y Eurostat, 
+            demuestra cómo España se ha estancado mientras acumula una deuda insostenible que compromete el futuro de generaciones.
+        </p>
+    </div>
+    
+    <div class="analysis-grid">
+        <div class="analysis-card primary">
+            <div class="card-header">
+                <div class="card-number">1</div>
+                <h2 class="card-title">El Empobrecimiento Real</h2>
+                <p class="card-subtitle">España: Estancamiento y Deuda</p>
+            </div>
+            <div class="card-content">
+                <p>
+                    Análisis exhaustivo de cómo el PIB per cápita real está prácticamente estancado desde 2008 
+                    mientras la deuda se ha triplicado, creando una trampa económica sin precedentes.
+                </p>
+                <ul class="highlights">
+                    <li>
+                        <span class="highlight-icon">📊</span>
+                        <span>Gráfico interactivo PIB vs Deuda</span>
+                    </li>
+                    <li>
+                        <span class="highlight-icon">🏠</span>
+                        <span>Comparación costes de vida 2008 vs 2024</span>
+                    </li>
+                    <li>
+                        <span class="highlight-icon">💰</span>
+                        <span>Análisis del impacto en familias</span>
+                    </li>
+                    <li>
+                        <span class="highlight-icon">📈</span>
+                        <span>Proyecciones hasta 2030</span>
+                    </li>
+                </ul>
+                <a href="./espana.html" class="view-button">Ver Análisis Completo</a>
+            </div>
+        </div>
+        
+        <div class="analysis-card secondary">
+            <div class="card-header">
+                <div class="card-number">2</div>
+                <h2 class="card-title">La Gran Divergencia</h2>
+                <p class="card-subtitle">España vs UE vs USA</p>
+            </div>
+            <div class="card-content">
+                <p>
+                    Comparación internacional que muestra cómo España se quedó atrás mientras otros países 
+                    prosperaban. La brecha se amplía cada año que pasa.
+                </p>
+                <ul class="highlights">
+                    <li>
+                        <span class="highlight-icon">🌍</span>
+                        <span>España: +3.2% vs USA: +25.3%</span>
+                    </li>
+                    <li>
+                        <span class="highlight-icon">📉</span>
+                        <span>80 años para alcanzar a USA</span>
+                    </li>
+                    <li>
+                        <span class="highlight-icon">🏗️</span>
+                        <span>Análisis de modelos económicos</span>
+                    </li>
+                    <li>
+                        <span class="highlight-icon">🔄</span>
+                        <span>Propuestas de cambio estructural</span>
+                    </li>
+                </ul>
+                <a href="./divergencia.html" class="view-button">Ver Comparación</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="quote-section">
+        <p class="quote">
+            "Una familia que ganaba 30.000€ y debía 8.500€ en 2008, 
+            ahora gana 31.000€ y debe 26.000€. Eso es empobrecimiento real."
+        </p>
+        <p class="quote-author">- Del análisis técnico</p>
+    </div>
+    
+    <div class="warning-banner">
+        <p>⚠️ España tiene 4-5 años para cambiar de rumbo antes de enfrentar una crisis de deuda inevitable</p>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-content">
+        <p class="source-note">
+            Todos los datos provienen de fuentes oficiales: INE (Contabilidad Nacional Trimestral), 
+            Banco de España (Boletín Estadístico), Eurostat (nama_10_pc), FRED (Federal Reserve Economic Data). 
+            Metodología: Euros constantes 2015, volúmenes encadenados, criterios EDP/Maastricht.
+        </p>
+        
+        <div class="share-section">
+            <p class="share-title">Comparte este análisis:</p>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text=España%20se%20empobrece%3A%20PIB%20per%20cápita%20%2B3.2%25%20vs%20Deuda%20%2B211%25%20desde%202008.%20Análisis%20con%20datos%20oficiales%3A&url=" class="share-button" target="_blank">
+                    <span>🐦</span>
+                    <span>Twitter/X</span>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-button" target="_blank">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://reddit.com/submit?title=El%20Empobrecimiento%20de%20España%3A%20Análisis%20Económico&url=" class="share-button" target="_blank">
+                    <span>📱</span>
+                    <span>Reddit</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Animación de entrada para las tarjetas
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.analysis-card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.8s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Actualizar URLs de compartir con la URL actual
+        const currentUrl = window.location.href;
+        const shareButtons = document.querySelectorAll('.share-button');
+        shareButtons.forEach(button => {
+            const href = button.getAttribute('href');
+            button.setAttribute('href', href + encodeURIComponent(currentUrl));
+        });
+    });
+</script>
+```
+
+</body>
+</html>
