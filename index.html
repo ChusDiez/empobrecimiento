@@ -10,17 +10,43 @@
     <meta property="og:title" content="España 2008-2024: PIB estancado, deuda triplicada">
     <meta property="og:description" content="Análisis económico con datos oficiales. PIB per cápita +3.2%, deuda per cápita +211%.">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #121212;
+            --bg-secondary: #1e1e1e;
+            --fg: #f0f0f0;
+            --fg-muted: #b0b0b0;
+            --accent-red: #ff6b6b;
+            --accent-yellow: #feca57;
+            --accent-blue: #4dabf7;
+            --accent-green: #82ca9d;
+            --border: #333;
         }
 
 ```
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --fg: #222222;
+            --fg-muted: #666666;
+            --accent-red: #d32f2f;
+            --accent-yellow: #f57c00;
+            --accent-blue: #1976d2;
+            --accent-green: #388e3c;
+            --border: #ddd;
+        }
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background-color: #0a0a0a;
-        color: #e0e0e0;
+        background-color: var(--bg);
+        color: var(--fg);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -30,10 +56,16 @@
     .nav-bar {
         background: #000;
         padding: 15px 0;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
         z-index: 1000;
+    }
+
+    @media (prefers-color-scheme: light) {
+        .nav-bar {
+            background: #f8f8f8;
+        }
     }
     
     .nav-container {
@@ -48,7 +80,7 @@
     .nav-brand {
         font-size: 1.2em;
         font-weight: 600;
-        color: #ff6b6b;
+        color: var(--accent-red);
         text-decoration: none;
     }
     
@@ -59,7 +91,7 @@
     }
     
     .nav-link {
-        color: #b0b0b0;
+        color: var(--fg-muted);
         text-decoration: none;
         padding: 8px 16px;
         border-radius: 20px;
@@ -69,31 +101,48 @@
     
     .nav-link:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: #fff;
+        color: var(--fg);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
     }
     
     .nav-link.active {
-        background: #ff6b6b;
+        background: var(--accent-red);
         color: #fff;
     }
     
     .hero {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         padding: 60px 20px;
         text-align: center;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    h1, h2, h3 {
+        color: #ffffff;
+        letter-spacing: .5px;
+    }
+
+    @media (prefers-color-scheme: light) {
+        h1, h2, h3 {
+            color: var(--fg);
+        }
     }
     
     .hero h1 {
         font-size: 3em;
-        color: #ff6b6b;
+        color: var(--accent-red);
         margin-bottom: 15px;
         font-weight: 700;
     }
     
     .hero-subtitle {
         font-size: 1.3em;
-        color: #d0d0d0;
+        color: var(--fg);
         margin-bottom: 30px;
     }
     
@@ -106,20 +155,20 @@
     
     .key-stat {
         padding: 20px 30px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--bg-secondary);
         border-radius: 10px;
-        border: 1px solid #333;
+        border: 1px solid var(--border);
     }
     
     .key-stat-value {
         font-size: 2.2em;
         font-weight: bold;
-        color: #ff6b6b;
+        color: var(--accent-red);
     }
     
     .key-stat-label {
         font-size: 0.9em;
-        color: #b0b0b0;
+        color: var(--fg-muted);
         margin-top: 5px;
     }
     
@@ -141,12 +190,12 @@
     .intro-text p {
         font-size: 1.15em;
         line-height: 1.7;
-        color: #d0d0d0;
+        color: var(--fg);
         margin-bottom: 20px;
     }
     
     .intro-text strong {
-        color: #ff6b6b;
+        color: var(--accent-red);
     }
     
     .analysis-grid {
@@ -157,12 +206,18 @@
     }
     
     .analysis-card {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         transition: transform 0.3s ease;
-        border: 1px solid #333;
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .analysis-card {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
     }
     
     .analysis-card:hover {
@@ -172,7 +227,13 @@
     .card-header {
         padding: 30px;
         background: rgba(255, 255, 255, 0.02);
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .card-header {
+            background: rgba(0, 0, 0, 0.02);
+        }
     }
     
     .card-number {
@@ -181,7 +242,7 @@
         height: 40px;
         line-height: 40px;
         text-align: center;
-        background: #ff6b6b;
+        background: var(--accent-red);
         color: #fff;
         border-radius: 50%;
         font-weight: bold;
@@ -189,18 +250,18 @@
     }
     
     .analysis-card.secondary .card-number {
-        background: #4dabf7;
+        background: var(--accent-blue);
     }
     
     .card-title {
         font-size: 1.7em;
-        color: #fff;
+        color: var(--fg);
         margin-bottom: 10px;
         font-weight: 600;
     }
     
     .card-subtitle {
-        color: #b0b0b0;
+        color: var(--fg-muted);
         font-size: 1.05em;
     }
     
@@ -210,7 +271,7 @@
     
     .card-content p {
         line-height: 1.7;
-        color: #d0d0d0;
+        color: var(--fg);
         margin-bottom: 20px;
     }
     
@@ -221,10 +282,11 @@
     
     .highlights li {
         padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--border);
         display: flex;
         align-items: center;
         gap: 10px;
+        color: var(--fg);
     }
     
     .highlights li:last-child {
@@ -239,7 +301,7 @@
         display: inline-block;
         margin-top: 20px;
         padding: 15px 35px;
-        background: #ff6b6b;
+        background: var(--accent-red);
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
@@ -251,7 +313,7 @@
     }
     
     .analysis-card.secondary .view-button {
-        background: #4dabf7;
+        background: var(--accent-blue);
     }
     
     .view-button:hover {
@@ -263,23 +325,23 @@
     }
     
     .quote-section {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         padding: 40px;
         border-radius: 12px;
         text-align: center;
         margin: 50px 0;
-        border: 1px solid #333;
+        border: 1px solid var(--border);
     }
     
     .quote {
         font-size: 1.4em;
-        color: #feca57;
+        color: var(--accent-yellow);
         margin-bottom: 15px;
         line-height: 1.5;
     }
     
     .quote-author {
-        color: #999;
+        color: var(--fg-muted);
         font-size: 1em;
     }
     
@@ -293,7 +355,7 @@
     }
     
     .warning-banner p {
-        color: #ff6b6b;
+        color: var(--accent-red);
         font-weight: 500;
         font-size: 1.1em;
         margin: 0;
@@ -301,9 +363,15 @@
     
     .footer {
         background: #000;
-        border-top: 1px solid #333;
+        border-top: 1px solid var(--border);
         padding: 40px 20px;
         text-align: center;
+    }
+
+    @media (prefers-color-scheme: light) {
+        .footer {
+            background: #f8f8f8;
+        }
     }
     
     .footer-content {
@@ -312,7 +380,7 @@
     }
     
     .source-note {
-        color: #999;
+        color: var(--fg-muted);
         font-size: 0.9em;
         margin-bottom: 20px;
         line-height: 1.6;
@@ -323,7 +391,7 @@
     }
     
     .share-title {
-        color: #d0d0d0;
+        color: var(--fg);
         margin-bottom: 15px;
         font-size: 1.05em;
     }
@@ -338,7 +406,7 @@
     .share-button {
         padding: 10px 20px;
         background: rgba(255, 255, 255, 0.1);
-        color: #e0e0e0;
+        color: var(--fg);
         text-decoration: none;
         border-radius: 5px;
         transition: background 0.3s ease;
@@ -346,11 +414,23 @@
         align-items: center;
         gap: 8px;
         font-size: 0.95em;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .share-button {
+            background: rgba(0, 0, 0, 0.05);
+        }
     }
     
     .share-button:hover {
         background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .share-button:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
     }
     
     @media (max-width: 900px) {
@@ -579,7 +659,6 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Actualizar URLs de compartir
         const currentUrl = window.location.href;
         const shareButtons = document.querySelectorAll('.share-button');
         shareButtons.forEach(button => {
