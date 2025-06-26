@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -16,544 +15,541 @@
             box-sizing: border-box;
         }
 
-```
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background-color: #0a0a0a;
-        color: #e0e0e0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        line-height: 1.6;
-    }
-    
-    /* Navegación mejorada */
-    .nav-bar {
-        background: #000;
-        padding: 15px 0;
-        border-bottom: 1px solid #333;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-    
-    .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .nav-brand {
-        font-size: 1.3em;
-        font-weight: bold;
-        color: #ff6b6b;
-        text-decoration: none;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    }
-    
-    .nav-links {
-        display: flex;
-        gap: 25px;
-        align-items: center;
-    }
-    
-    .nav-link {
-        color: #b0b0b0;
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-        font-size: 0.95em;
-    }
-    
-    .nav-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        transform: translateY(-1px);
-    }
-    
-    .nav-link.active {
-        background: linear-gradient(45deg, #ff6b6b, #feca57);
-        color: #fff;
-        font-weight: 500;
-    }
-    
-    /* Hero section mejorada */
-    .hero {
-        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-        padding: 80px 20px;
-        text-align: center;
-        border-bottom: 1px solid #333;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,107,107,0.05) 0%, transparent 70%);
-        animation: pulse 15s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 0.5; }
-        50% { transform: scale(1.1); opacity: 0.8; }
-    }
-    
-    .hero h1 {
-        font-size: 3.5em;
-        color: #ff6b6b;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-        line-height: 1.2;
-        position: relative;
-        z-index: 1;
-        background: linear-gradient(90deg, #ff6b6b, #ff8787, #ff6b6b);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient 5s ease-in-out infinite;
-    }
-    
-    @keyframes gradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-    }
-    
-    .hero-subtitle {
-        font-size: 1.5em;
-        color: #feca57;
-        margin-bottom: 35px;
-        font-style: italic;
-        position: relative;
-        z-index: 1;
-    }
-    
-    /* Key stats mejorados */
-    .key-stats {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .key-stat {
-        display: inline-block;
-        margin: 10px;
-        padding: 20px 30px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 35px;
-        border: 2px solid;
-        border-image: linear-gradient(45deg, #ff6b6b, #feca57) 1;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-    }
-    
-    .key-stat:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-        background: rgba(255, 255, 255, 0.08);
-    }
-    
-    .key-stat-value {
-        font-size: 2.2em;
-        font-weight: bold;
-        color: #ff6b6b;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
-    
-    .key-stat-label {
-        font-size: 1em;
-        color: #b0b0b0;
-        margin-top: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    /* Container principal */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 60px 20px;
-        flex: 1;
-    }
-    
-    .intro-text {
-        text-align: center;
-        margin-bottom: 60px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .intro-text p {
-        font-size: 1.25em;
-        line-height: 1.8;
-        color: #d0d0d0;
-        margin-bottom: 25px;
-    }
-    
-    .intro-text strong {
-        color: #ff6b6b;
-        font-weight: 600;
-    }
-    
-    /* Grid de análisis mejorado */
-    .analysis-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 40px;
-        margin-bottom: 60px;
-    }
-    
-    .analysis-card {
-        background: #1a1a1a;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        transition: all 0.4s ease;
-        border: 2px solid transparent;
-        position: relative;
-    }
-    
-    .analysis-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .analysis-card:hover::before {
-        opacity: 1;
-    }
-    
-    .analysis-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-    }
-    
-    .analysis-card.primary {
-        border-image: linear-gradient(45deg, #ff6b6b, #ff8787) 1;
-        --accent-color: #ff6b6b;
-        --accent-color-2: #ff8787;
-    }
-    
-    .analysis-card.secondary {
-        border-image: linear-gradient(45deg, #4dabf7, #6db8f9) 1;
-        --accent-color: #4dabf7;
-        --accent-color-2: #6db8f9;
-    }
-    
-    .card-header {
-        padding: 35px;
-        background: rgba(255, 255, 255, 0.03);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .card-number {
-        display: inline-block;
-        width: 45px;
-        height: 45px;
-        line-height: 45px;
-        text-align: center;
-        background: linear-gradient(45deg, #ff6b6b, #ff8787);
-        color: #fff;
-        border-radius: 50%;
-        font-weight: bold;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
-        font-size: 1.2em;
-    }
-    
-    .analysis-card.secondary .card-number {
-        background: linear-gradient(45deg, #4dabf7, #6db8f9);
-        box-shadow: 0 4px 10px rgba(77, 171, 247, 0.3);
-    }
-    
-    .card-title {
-        font-size: 1.9em;
-        color: #fff;
-        margin-bottom: 12px;
-        font-weight: bold;
-    }
-    
-    .card-subtitle {
-        color: #b0b0b0;
-        font-size: 1.15em;
-    }
-    
-    .card-content {
-        padding: 35px;
-    }
-    
-    .card-content p {
-        line-height: 1.8;
-        color: #d0d0d0;
-        margin-bottom: 25px;
-        font-size: 1.05em;
-    }
-    
-    .highlights {
-        list-style: none;
-        margin: 25px 0;
-    }
-    
-    .highlights li {
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        transition: all 0.3s ease;
-    }
-    
-    .highlights li:hover {
-        padding-left: 10px;
-        background: rgba(255, 255, 255, 0.02);
-    }
-    
-    .highlights li:last-child {
-        border-bottom: none;
-    }
-    
-    .highlight-icon {
-        font-size: 1.6em;
-    }
-    
-    .view-button {
-        display: inline-block;
-        margin-top: 25px;
-        padding: 18px 45px;
-        background: linear-gradient(45deg, #ff6b6b, #ff8787);
-        color: #fff;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: bold;
-        font-size: 1.15em;
-        transition: all 0.3s ease;
-        text-align: center;
-        width: 100%;
-        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-    }
-    
-    .analysis-card.secondary .view-button {
-        background: linear-gradient(45deg, #4dabf7, #6db8f9);
-        box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
-    }
-    
-    .view-button:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
-    }
-    
-    .analysis-card.secondary .view-button:hover {
-        box-shadow: 0 10px 30px rgba(77, 171, 247, 0.5);
-    }
-    
-    /* Quote section mejorada */
-    .quote-section {
-        background: #1a1a1a;
-        padding: 45px;
-        border-radius: 20px;
-        text-align: center;
-        margin: 60px 0;
-        border: 2px solid;
-        border-image: linear-gradient(45deg, #feca57, #fed477) 1;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .quote-section::before {
-        content: '"';
-        position: absolute;
-        top: -20px;
-        left: 20px;
-        font-size: 120px;
-        color: rgba(254, 202, 87, 0.1);
-        font-family: Georgia, serif;
-    }
-    
-    .quote {
-        font-size: 1.6em;
-        font-style: italic;
-        color: #feca57;
-        margin-bottom: 20px;
-        line-height: 1.6;
-        position: relative;
-        z-index: 1;
-    }
-    
-    .quote-author {
-        color: #b0b0b0;
-        font-size: 1.15em;
-    }
-    
-    /* Warning banner mejorado */
-    .warning-banner {
-        background: rgba(255, 107, 107, 0.15);
-        border: 2px solid rgba(255, 107, 107, 0.4);
-        padding: 25px;
-        border-radius: 15px;
-        margin: 40px 0;
-        text-align: center;
-        backdrop-filter: blur(5px);
-        box-shadow: 0 5px 20px rgba(255, 107, 107, 0.2);
-    }
-    
-    .warning-banner p {
-        color: #ff6b6b;
-        font-weight: bold;
-        font-size: 1.2em;
-        margin: 0;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
-    
-    /* Footer mejorado */
-    .footer {
-        background: #000;
-        border-top: 1px solid #333;
-        padding: 50px 20px;
-        text-align: center;
-    }
-    
-    .footer-content {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .source-note {
-        color: #999;
-        font-size: 0.95em;
-        margin-bottom: 25px;
-        line-height: 1.7;
-    }
-    
-    .share-section {
-        margin-top: 35px;
-    }
-    
-    .share-title {
-        color: #d0d0d0;
-        margin-bottom: 20px;
-        font-size: 1.15em;
-        font-weight: 500;
-    }
-    
-    .share-buttons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .share-button {
-        padding: 12px 24px;
-        background: rgba(255, 255, 255, 0.1);
-        color: #e0e0e0;
-        text-decoration: none;
-        border-radius: 25px;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 1em;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .share-button:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Media queries mejoradas */
-    @media (max-width: 900px) {
-        .analysis-grid {
-            grid-template-columns: 1fr;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
         }
-    }
-    
-    @media (max-width: 768px) {
+        
+        /* Navegación mejorada */
+        .nav-bar {
+            background: #000;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        
         .nav-container {
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .nav-links {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5em;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2em;
-        }
-        
-        .key-stats {
-            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
         
-        .key-stat {
-            width: 100%;
-            max-width: 300px;
+        .nav-brand {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
-        .quote {
-            font-size: 1.3em;
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
         }
-    }
-    
-    @media (max-width: 600px) {
+        
+        .nav-link {
+            color: #b0b0b0;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+        
+        .nav-link.active {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        /* Hero section mejorada */
         .hero {
-            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,107,0.05) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
         
         .hero h1 {
-            font-size: 2em;
+            font-size: 3.5em;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #ff6b6b, #ff8787, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 5s ease-in-out infinite;
+        }
+        
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: #feca57;
+            margin-bottom: 35px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Key stats mejorados */
+        .key-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .key-stat {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 35px;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ff6b6b, #feca57) 1;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .key-stat:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            background: rgba(255, 255, 255, 0.08);
         }
         
         .key-stat-value {
-            font-size: 1.8em;
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         
+        .key-stat-label {
+            font-size: 1em;
+            color: #b0b0b0;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            flex: 1;
+        }
+        
+        .intro-text {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro-text p {
+            font-size: 1.25em;
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 25px;
+        }
+        
+        .intro-text strong {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        
+        /* Grid de análisis mejorado */
         .analysis-grid {
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .analysis-card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .analysis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .analysis-card:hover::before {
+            opacity: 1;
+        }
+        
+        .analysis-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+        }
+        
+        .analysis-card.primary {
+            border-image: linear-gradient(45deg, #ff6b6b, #ff8787) 1;
+            --accent-color: #ff6b6b;
+            --accent-color-2: #ff8787;
+        }
+        
+        .analysis-card.secondary {
+            border-image: linear-gradient(45deg, #4dabf7, #6db8f9) 1;
+            --accent-color: #4dabf7;
+            --accent-color-2: #6db8f9;
         }
         
         .card-header {
-            padding: 25px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-number {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b, #ff8787);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+            font-size: 1.2em;
+        }
+        
+        .analysis-card.secondary .card-number {
+            background: linear-gradient(45deg, #4dabf7, #6db8f9);
+            box-shadow: 0 4px 10px rgba(77, 171, 247, 0.3);
         }
         
         .card-title {
+            font-size: 1.9em;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        
+        .card-subtitle {
+            color: #b0b0b0;
+            font-size: 1.15em;
+        }
+        
+        .card-content {
+            padding: 35px;
+        }
+        
+        .card-content p {
+            line-height: 1.8;
+            color: #d0d0d0;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+        
+        .highlights {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .highlights li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .highlights li:hover {
+            padding-left: 10px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .highlights li:last-child {
+            border-bottom: none;
+        }
+        
+        .highlight-icon {
             font-size: 1.6em;
         }
         
-        .quote-section {
-            padding: 30px 20px;
+        .view-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 18px 45px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8787);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.15em;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
         }
-    }
-</style>
-```
-
+        
+        .analysis-card.secondary .view-button {
+            background: linear-gradient(45deg, #4dabf7, #6db8f9);
+            box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
+        }
+        
+        .view-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+        }
+        
+        .analysis-card.secondary .view-button:hover {
+            box-shadow: 0 10px 30px rgba(77, 171, 247, 0.5);
+        }
+        
+        /* Quote section mejorada */
+        .quote-section {
+            background: #1a1a1a;
+            padding: 45px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #feca57, #fed477) 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(254, 202, 87, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .quote {
+            font-size: 1.6em;
+            font-style: italic;
+            color: #feca57;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-author {
+            color: #b0b0b0;
+            font-size: 1.15em;
+        }
+        
+        /* Warning banner mejorado */
+        .warning-banner {
+            background: rgba(255, 107, 107, 0.15);
+            border: 2px solid rgba(255, 107, 107, 0.4);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.2);
+        }
+        
+        .warning-banner p {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* Footer mejorado */
+        .footer {
+            background: #000;
+            border-top: 1px solid #333;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .source-note {
+            color: #999;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .share-section {
+            margin-top: 35px;
+        }
+        
+        .share-title {
+            color: #d0d0d0;
+            margin-bottom: 20px;
+            font-size: 1.15em;
+            font-weight: 500;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .share-button {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1em;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .share-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Media queries mejoradas */
+        @media (max-width: 900px) {
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+            
+            .key-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .key-stat {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .quote {
+                font-size: 1.3em;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .key-stat-value {
+                font-size: 1.8em;
+            }
+            
+            .analysis-grid {
+                gap: 30px;
+            }
+            
+            .card-header {
+                padding: 25px;
+            }
+            
+            .card-title {
+                font-size: 1.6em;
+            }
+            
+            .quote-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="nav-bar">
@@ -567,200 +563,197 @@
         </div>
     </nav>
 
-```
-<div class="hero">
-    <h1>El Empobrecimiento de España</h1>
-    <p class="hero-subtitle">Análisis económico basado en datos oficiales (2008-2024)</p>
-    
-    <div class="key-stats">
-        <div class="key-stat">
-            <div class="key-stat-value">+3.2%</div>
-            <div class="key-stat-label">PIB per cápita real</div>
-        </div>
-        <div class="key-stat">
-            <div class="key-stat-value">+211%</div>
-            <div class="key-stat-label">Deuda per cápita</div>
-        </div>
-        <div class="key-stat">
-            <div class="key-stat-value">840€</div>
-            <div class="key-stat-label">Intereses por español/año</div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="intro-text">
-        <p>
-            España vive una ilusión de prosperidad. Mientras el PIB nominal crece y los políticos celebran la "recuperación", 
-            los datos revelan una realidad devastadora: <strong>nos estamos empobreciendo en tiempo real</strong>.
-        </p>
-        <p>
-            Este análisis, basado exclusivamente en datos oficiales del INE, Banco de España y Eurostat, 
-            demuestra cómo España se ha estancado mientras acumula una deuda insostenible que compromete el futuro de generaciones.
-        </p>
-    </div>
-    
-    <div class="analysis-grid">
-        <div class="analysis-card primary">
-            <div class="card-header">
-                <div class="card-number">1</div>
-                <h2 class="card-title">El Empobrecimiento Real</h2>
-                <p class="card-subtitle">España: Estancamiento y Deuda</p>
+    <div class="hero">
+        <h1>El Empobrecimiento de España</h1>
+        <p class="hero-subtitle">Análisis económico basado en datos oficiales (2008-2024)</p>
+        
+        <div class="key-stats">
+            <div class="key-stat">
+                <div class="key-stat-value">+3.2%</div>
+                <div class="key-stat-label">PIB per cápita real</div>
             </div>
-            <div class="card-content">
-                <p>
-                    Análisis exhaustivo de cómo el PIB per cápita real está prácticamente estancado desde 2008 
-                    mientras la deuda se ha triplicado, creando una trampa económica sin precedentes.
-                </p>
-                <ul class="highlights">
-                    <li>
-                        <span class="highlight-icon">📊</span>
-                        <span>Gráfico interactivo PIB vs Deuda</span>
-                    </li>
-                    <li>
-                        <span class="highlight-icon">🏠</span>
-                        <span>Comparación costes de vida 2008 vs 2024</span>
-                    </li>
-                    <li>
-                        <span class="highlight-icon">💰</span>
-                        <span>Análisis del impacto en familias</span>
-                    </li>
-                    <li>
-                        <span class="highlight-icon">📈</span>
-                        <span>Proyecciones hasta 2030</span>
-                    </li>
-                </ul>
-                <a href="./espana.html" class="view-button">Ver Análisis Completo</a>
+            <div class="key-stat">
+                <div class="key-stat-value">+211%</div>
+                <div class="key-stat-label">Deuda per cápita</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">840€</div>
+                <div class="key-stat-label">Intereses por español/año</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="intro-text">
+            <p>
+                España vive una ilusión de prosperidad. Mientras el PIB nominal crece y los políticos celebran la "recuperación", 
+                los datos revelan una realidad devastadora: <strong>nos estamos empobreciendo en tiempo real</strong>.
+            </p>
+            <p>
+                Este análisis, basado exclusivamente en datos oficiales del INE, Banco de España y Eurostat, 
+                demuestra cómo España se ha estancado mientras acumula una deuda insostenible que compromete el futuro de generaciones.
+            </p>
+        </div>
+        
+        <div class="analysis-grid">
+            <div class="analysis-card primary">
+                <div class="card-header">
+                    <div class="card-number">1</div>
+                    <h2 class="card-title">El Empobrecimiento Real</h2>
+                    <p class="card-subtitle">España: Estancamiento y Deuda</p>
+                </div>
+                <div class="card-content">
+                    <p>
+                        Análisis exhaustivo de cómo el PIB per cápita real está prácticamente estancado desde 2008 
+                        mientras la deuda se ha triplicado, creando una trampa económica sin precedentes.
+                    </p>
+                    <ul class="highlights">
+                        <li>
+                            <span class="highlight-icon">📊</span>
+                            <span>Gráfico interactivo PIB vs Deuda</span>
+                        </li>
+                        <li>
+                            <span class="highlight-icon">🏠</span>
+                            <span>Comparación costes de vida 2008 vs 2024</span>
+                        </li>
+                        <li>
+                            <span class="highlight-icon">💰</span>
+                            <span>Análisis del impacto en familias</span>
+                        </li>
+                        <li>
+                            <span class="highlight-icon">📈</span>
+                            <span>Proyecciones hasta 2030</span>
+                        </li>
+                    </ul>
+                    <a href="./espana.html" class="view-button">Ver Análisis Completo</a>
+                </div>
+            </div>
+            
+            <div class="analysis-card secondary">
+                <div class="card-header">
+                    <div class="card-number">2</div>
+                    <h2 class="card-title">La Gran Divergencia</h2>
+                    <p class="card-subtitle">España vs UE vs USA</p>
+                </div>
+                <div class="card-content">
+                    <p>
+                        Comparación internacional que muestra cómo España se quedó atrás mientras otros países 
+                        prosperaban. La brecha se amplía cada año que pasa.
+                    </p>
+                    <ul class="highlights">
+                        <li>
+                            <span class="highlight-icon">🌍</span>
+                            <span>España: +3.2% vs USA: +25.3%</span>
+                        </li>
+                        <li>
+                            <span class="highlight-icon">📉</span>
+                            <span>80 años para alcanzar a USA</span>
+                        </li>
+                        <li>
+                            <span class="highlight-icon">🏗️</span>
+                            <span>Análisis de modelos económicos</span>
+                        </li>
+                        <li>
+                            <span class="highlight-icon">🔄</span>
+                            <span>Propuestas de cambio estructural</span>
+                        </li>
+                    </ul>
+                    <a href="./divergencia.html" class="view-button">Ver Comparación</a>
+                </div>
             </div>
         </div>
         
-        <div class="analysis-card secondary">
-            <div class="card-header">
-                <div class="card-number">2</div>
-                <h2 class="card-title">La Gran Divergencia</h2>
-                <p class="card-subtitle">España vs UE vs USA</p>
-            </div>
-            <div class="card-content">
-                <p>
-                    Comparación internacional que muestra cómo España se quedó atrás mientras otros países 
-                    prosperaban. La brecha se amplía cada año que pasa.
-                </p>
-                <ul class="highlights">
-                    <li>
-                        <span class="highlight-icon">🌍</span>
-                        <span>España: +3.2% vs USA: +25.3%</span>
-                    </li>
-                    <li>
-                        <span class="highlight-icon">📉</span>
-                        <span>80 años para alcanzar a USA</span>
-                    </li>
-                    <li>
-                        <span class="highlight-icon">🏗️</span>
-                        <span>Análisis de modelos económicos</span>
-                    </li>
-                    <li>
-                        <span class="highlight-icon">🔄</span>
-                        <span>Propuestas de cambio estructural</span>
-                    </li>
-                </ul>
-                <a href="./divergencia.html" class="view-button">Ver Comparación</a>
+        <div class="quote-section">
+            <p class="quote">
+                "Una familia que ganaba 30.000€ y debía 8.500€ en 2008, 
+                ahora gana 31.000€ y debe 26.000€. Eso es empobrecimiento real."
+            </p>
+            <p class="quote-author">- Del análisis técnico</p>
+        </div>
+        
+        <div class="warning-banner">
+            <p>⚠️ España tiene 4-5 años para cambiar de rumbo antes de enfrentar una crisis de deuda inevitable</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-content">
+            <p class="source-note">
+                Todos los datos provienen de fuentes oficiales: INE (Contabilidad Nacional Trimestral), 
+                Banco de España (Boletín Estadístico), Eurostat (nama_10_pc), FRED (Federal Reserve Economic Data). 
+                Metodología: Euros constantes 2015, volúmenes encadenados, criterios EDP/Maastricht.
+            </p>
+            
+            <div class="share-section">
+                <p class="share-title">Comparte este análisis:</p>
+                <div class="share-buttons">
+                    <a href="https://twitter.com/intent/tweet?text=España%20se%20empobrece%3A%20PIB%20per%20cápita%20%2B3.2%25%20vs%20Deuda%20%2B211%25%20desde%202008.%20Análisis%20con%20datos%20oficiales%3A&url=" class="share-button" target="_blank">
+                        <span>🐦</span>
+                        <span>Twitter/X</span>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-button" target="_blank">
+                        <span>💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://reddit.com/submit?title=El%20Empobrecimiento%20de%20España%3A%20Análisis%20Económico&url=" class="share-button" target="_blank">
+                        <span>📱</span>
+                        <span>Reddit</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="quote-section">
-        <p class="quote">
-            "Una familia que ganaba 30.000€ y debía 8.500€ en 2008, 
-            ahora gana 31.000€ y debe 26.000€. Eso es empobrecimiento real."
-        </p>
-        <p class="quote-author">- Del análisis técnico</p>
-    </div>
-    
-    <div class="warning-banner">
-        <p>⚠️ España tiene 4-5 años para cambiar de rumbo antes de enfrentar una crisis de deuda inevitable</p>
-    </div>
-</div>
 
-<div class="footer">
-    <div class="footer-content">
-        <p class="source-note">
-            Todos los datos provienen de fuentes oficiales: INE (Contabilidad Nacional Trimestral), 
-            Banco de España (Boletín Estadístico), Eurostat (nama_10_pc), FRED (Federal Reserve Economic Data). 
-            Metodología: Euros constantes 2015, volúmenes encadenados, criterios EDP/Maastricht.
-        </p>
-        
-        <div class="share-section">
-            <p class="share-title">Comparte este análisis:</p>
-            <div class="share-buttons">
-                <a href="https://twitter.com/intent/tweet?text=España%20se%20empobrece%3A%20PIB%20per%20cápita%20%2B3.2%25%20vs%20Deuda%20%2B211%25%20desde%202008.%20Análisis%20con%20datos%20oficiales%3A&url=" class="share-button" target="_blank">
-                    <span>🐦</span>
-                    <span>Twitter/X</span>
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-button" target="_blank">
-                    <span>💼</span>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://reddit.com/submit?title=El%20Empobrecimiento%20de%20España%3A%20Análisis%20Económico&url=" class="share-button" target="_blank">
-                    <span>📱</span>
-                    <span>Reddit</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Animación de entrada mejorada para las tarjetas
-    document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.analysis-card');
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '0';
-                        entry.target.style.transform = 'translateY(30px)';
+    <script>
+        // Animación de entrada mejorada para las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.analysis-card');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
                         setTimeout(() => {
-                            entry.target.style.transition = 'all 0.8s ease';
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                        }, 100);
-                    }, index * 150);
-                    observer.unobserve(entry.target);
-                }
+                            entry.target.style.opacity = '0';
+                            entry.target.style.transform = 'translateY(30px)';
+                            setTimeout(() => {
+                                entry.target.style.transition = 'all 0.8s ease';
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }, 100);
+                        }, index * 150);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            cards.forEach(card => {
+                observer.observe(card);
             });
-        }, observerOptions);
-        
-        cards.forEach(card => {
-            observer.observe(card);
+            
+            // Animación para key stats
+            const stats = document.querySelectorAll('.key-stat');
+            stats.forEach((stat, index) => {
+                stat.style.opacity = '0';
+                stat.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    stat.style.transition = 'all 0.6s ease';
+                    stat.style.opacity = '1';
+                    stat.style.transform = 'translateY(0)';
+                }, 300 + (index * 100));
+            });
+            
+            // Actualizar URLs de compartir con la URL actual
+            const currentUrl = window.location.href;
+            const shareButtons = document.querySelectorAll('.share-button');
+            shareButtons.forEach(button => {
+                const href = button.getAttribute('href');
+                button.setAttribute('href', href + encodeURIComponent(currentUrl));
+            });
         });
-        
-        // Animación para key stats
-        const stats = document.querySelectorAll('.key-stat');
-        stats.forEach((stat, index) => {
-            stat.style.opacity = '0';
-            stat.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                stat.style.transition = 'all 0.6s ease';
-                stat.style.opacity = '1';
-                stat.style.transform = 'translateY(0)';
-            }, 300 + (index * 100));
-        });
-        
-        // Actualizar URLs de compartir con la URL actual
-        const currentUrl = window.location.href;
-        const shareButtons = document.querySelectorAll('.share-button');
-        shareButtons.forEach(button => {
-            const href = button.getAttribute('href');
-            button.setAttribute('href', href + encodeURIComponent(currentUrl));
-        });
-    });
-</script>
-```
-
+    </script>
 </body>
 </html>
