@@ -1,53 +1,50 @@
-# El Empobrecimiento de España: Análisis Económico (2008-2024)
+# España: Análisis Económico 2008-2024
 
 ## 📊 Descripción
 
-Análisis exhaustivo de la situación económica española basado exclusivamente en datos oficiales del INE, Banco de España, Eurostat y otras fuentes gubernamentales.
+Análisis macroeconómico basado en datos oficiales del INE, Banco de España, Eurostat y Federal Reserve. Documentación del estancamiento del PIB per cápita real y el crecimiento exponencial de la deuda pública.
 
 ## 🔍 Contenido
 
 ### 1. [Página Principal](./index.html)
 
-Resumen ejecutivo y acceso a los análisis detallados.
+Resumen ejecutivo con indicadores clave y acceso a los análisis detallados.
 
-### 2. [El Empobrecimiento Real de España](./espana.html)
+### 2. [Análisis España](./espana.html)
 
-- PIB per cápita real estancado (+3.2% en 16 años)
-- Deuda per cápita triplicada (+211%)
-- Comparación costes de vida 2008 vs 2024
-- Análisis del impacto en familias
+- PIB per cápita real: +3.2% en 16 años
+- Deuda per cápita real: +211%
+- Impacto en poder adquisitivo
+- Proyecciones de sostenibilidad fiscal
 
-### 3. [España vs UE vs USA: La Gran Divergencia](./divergencia.html)
+### 3. [Comparación Internacional](./divergencia.html)
 
-- Comparación internacional del crecimiento económico
 - España: +3.2% vs USA: +25.3% (PIB per cápita real)
 - Análisis de modelos económicos
-- Proyecciones y propuestas de cambio
+- Divergencia con UE-27: 15.3 puntos porcentuales
+- Implicaciones estructurales
 
-## 📈 Hallazgos Clave
+## 📈 Datos Clave
 
 - **PIB per cápita real**: Prácticamente estancado desde 2008 (+3.2%)
 - **Deuda per cápita**: Aumentó un 211% en términos reales
 - **Divergencia con Europa**: España crece 15.3 puntos menos que la UE-27
-- **Coste de oportunidad**: 40.320M€ anuales en intereses (840€ por español)
+- **Coste de oportunidad**: 712€ por español al año en intereses (euros constantes 2015)
 
-## 🛠️ Estructura de Archivos
+## 🛠️ Estructura Técnica
 
 ```
-├── index.html          # Landing page principal
-├── espana.html         # Análisis detallado de España
+├── index.html          # Landing con métricas principales
+├── espana.html         # Análisis detallado España
 ├── divergencia.html    # Comparación internacional
 └── README.md          # Este archivo
 ```
 
 ## 📱 Visualización
 
-Los análisis incluyen:
-
 - Gráficos interactivos con Chart.js
-- Diseño responsive para móviles
-- Navegación integrada entre análisis
-- Botones de compartir en redes sociales
+- Diseño responsive
+- Datos en tiempo real actualizables
 
 ## 📚 Fuentes de Datos
 
@@ -58,31 +55,39 @@ Los análisis incluyen:
 - **Idealista**: Datos de alquiler
 - **EPA**: Salarios medios
 
-## 🚀 Uso
+## 🚀 Despliegue
 
-1. Clona o descarga este repositorio
-1. Abre `index.html` en tu navegador
-1. Navega entre los diferentes análisis
+### Opción 1: Local
 
-Para publicar en GitHub Pages:
+```bash
+git clone [repositorio]
+# Abrir index.html en navegador
+```
 
-1. Ve a Settings → Pages
-1. Selecciona Source: Deploy from a branch
-1. Elige la rama main y carpeta / (root)
-1. Tu sitio estará disponible en `https://[tu-usuario].github.io`
+### Opción 2: GitHub Pages
+
+1. Settings → Pages
+1. Source: Deploy from a branch
+1. Branch: main, folder: / (root)
+1. URL: `https://[usuario].github.io/[repositorio]`
+
+## 📊 Metodología
+
+- Euros constantes 2015 (volúmenes encadenados)
+- Deflactor PIB 2024/2015: 1,18
+- Criterios SEC-2010/EDP para deuda pública
+- Población: Padrón continuo INE
 
 ## ⚖️ Licencia
 
-Este análisis está basado en datos públicos y es de libre distribución. Se agradece la atribución al compartir.
+Análisis basado en datos públicos. Libre distribución con atribución.
 
 ## 🤝 Contribuciones
 
-Si encuentras errores en los datos o tienes sugerencias, puedes:
-
-- Abrir un Issue
-- Enviar un Pull Request
-- Contactar a través de las redes sociales
+- Issues: Errores en datos o metodología
+- Pull Requests: Mejoras en visualización o análisis
+- Contacto: A través del repositorio
 
 -----
 
-*“Los datos no mienten. España necesita un cambio de modelo económico urgente.”*
+*Datos oficiales. Análisis independiente. Sin retórica, solo números.*
