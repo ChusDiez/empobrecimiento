@@ -40,11 +40,13 @@ Resumen ejecutivo con indicadores clave y acceso a los análisis detallados.
 └── README.md          # Este archivo
 ```
 
-## 📱 Visualización
+## 📱 Características
 
 - Gráficos interactivos con Chart.js
-- Diseño responsive
-- Datos en tiempo real actualizables
+- Diseño responsive optimizado para móviles
+- Soporte para modo claro/oscuro (prefers-color-scheme)
+- Contraste WCAG AA (≥ 4.5:1)
+- Gráficos de deuda con eje desde 0 y línea de referencia 2007
 
 ## 📚 Fuentes de Datos
 
@@ -53,7 +55,27 @@ Resumen ejecutivo con indicadores clave y acceso a los análisis detallados.
 - **Eurostat**: nama_10_pc, tec00114
 - **FRED**: Federal Reserve Economic Data
 - **Idealista**: Datos de alquiler
-- **EPA**: Salarios medios
+- **EPA**: Salarios medios (Tabla 7308)
+
+## 📊 Metodología
+
+### Unidades
+
+- Euros constantes 2015 (volúmenes encadenados)
+- Deflactor PIB 2024/2015: 1,18
+- Criterios SEC-2010/EDP para deuda pública
+
+### Salarios
+
+- Fuente: EPA (Tabla 7308), decil 5 (mediana)
+- Neto calculado con herramienta AEAT 2008 vs 2024
+- Trabajador tiempo completo, soltero sin hijos
+- Pérdida poder adquisitivo real: -5%
+
+### Visualización
+
+- Gráfico deuda/PIB: Eje Y desde 0 para mostrar evolución completa
+- Línea discontinua: Referencia 35.5% (España 2007)
 
 ## 🚀 Despliegue
 
@@ -71,12 +93,14 @@ git clone [repositorio]
 1. Branch: main, folder: / (root)
 1. URL: `https://[usuario].github.io/[repositorio]`
 
-## 📊 Metodología
+## 📋 Checklist antes de publicar
 
-- Euros constantes 2015 (volúmenes encadenados)
-- Deflactor PIB 2024/2015: 1,18
-- Criterios SEC-2010/EDP para deuda pública
-- Población: Padrón continuo INE
+- [ ] Gráfico deuda con eje desde 0 y línea 2007
+- [ ] Salario: etiqueta completa y disclaimer en notas
+- [ ] Alt-text en imágenes con fuentes
+- [ ] Contraste verificado (WCAG AA)
+- [ ] Modo oscuro/claro funcional
+- [ ] Link al repositorio
 
 ## ⚖️ Licencia
 
