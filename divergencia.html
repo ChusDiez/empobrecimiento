@@ -8,25 +8,56 @@
     <meta name="description" content="Divergencia económica: España +3.2%, UE-27 +18.5%, USA +25.3% en PIB per cápita real. Datos oficiales Eurostat y FRED.">
     <meta name="keywords" content="España vs Europa, divergencia económica, PIB per cápita comparación, productividad">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.2.1/chartjs-plugin-annotation.min.js"></script>
     <style>
         :root {
+            --bg: #121212;
+            --bg-secondary: #1e1e1e;
+            --fg: #f0f0f0;
+            --fg-muted: #b0b0b0;
+            --accent-red: #ff6b6b;
+            --accent-yellow: #feca57;
+            --accent-blue: #4dabf7;
+            --accent-green: #82ca9d;
+            --border: #333;
             color-scheme: dark;
         }
 
 ```
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --fg: #222222;
+            --fg-muted: #666666;
+            --accent-red: #d32f2f;
+            --accent-yellow: #f57c00;
+            --accent-blue: #1976d2;
+            --accent-green: #388e3c;
+            --border: #ddd;
+        }
+    }
+    
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         margin: 0;
         padding: 20px;
-        background-color: #0a0a0a;
-        color: #e0e0e0;
+        background-color: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
     }
     
     .nav-bar {
         background: #000;
         padding: 15px 0;
         margin: -20px -20px 20px -20px;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .nav-bar {
+            background: #f8f8f8;
+        }
     }
     
     .nav-container {
@@ -41,7 +72,7 @@
     .nav-brand {
         font-size: 1.2em;
         font-weight: 600;
-        color: #ff6b6b;
+        color: var(--accent-red);
         text-decoration: none;
     }
     
@@ -52,7 +83,7 @@
     }
     
     .nav-link {
-        color: #a0a0a0;
+        color: var(--fg-muted);
         text-decoration: none;
         padding: 8px 16px;
         border-radius: 20px;
@@ -62,11 +93,17 @@
     
     .nav-link:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: #fff;
+        color: var(--fg);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
     }
     
     .nav-link.active {
-        background: #4dabf7;
+        background: var(--accent-blue);
         color: #fff;
     }
     
@@ -87,9 +124,20 @@
         padding-top: 20px;
     }
     
+    h1, h2, h3 {
+        color: #ffffff;
+        letter-spacing: .5px;
+    }
+
+    @media (prefers-color-scheme: light) {
+        h1, h2, h3 {
+            color: var(--fg);
+        }
+    }
+    
     h1 {
         text-align: center;
-        color: #ff6b6b;
+        color: var(--accent-red);
         font-size: 2.5em;
         margin-bottom: 10px;
         font-weight: 700;
@@ -97,14 +145,14 @@
     
     .subtitle {
         text-align: center;
-        color: #d0d0d0;
+        color: var(--fg);
         font-size: 1.2em;
         margin-bottom: 20px;
     }
     
     .context-note {
         text-align: center;
-        color: #a0a0a0;
+        color: var(--fg-muted);
         font-size: 1.05em;
         margin-bottom: 40px;
         max-width: 800px;
@@ -130,11 +178,18 @@
     }
     
     .chart-container {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         padding: 25px;
         border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         height: 450px;
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .chart-container {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
     }
     
     .key-metrics {
@@ -145,23 +200,29 @@
     }
     
     .country-card {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         padding: 25px;
         border-radius: 10px;
         box-shadow: 0 3px 15px rgba(0,0,0,0.4);
-        border: 1px solid #333;
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .country-card {
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
     }
     
     .country-card.spain {
-        border-color: #ff6b6b;
+        border-color: var(--accent-red);
     }
     
     .country-card.eu {
-        border-color: #4dabf7;
+        border-color: var(--accent-blue);
     }
     
     .country-card.usa {
-        border-color: #82ca9d;
+        border-color: var(--accent-green);
     }
     
     .country-name {
@@ -171,6 +232,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        color: var(--fg);
     }
     
     .flag {
@@ -182,11 +244,11 @@
         justify-content: space-between;
         margin: 10px 0;
         padding: 8px 0;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--border);
     }
     
     .metric-label {
-        color: #a0a0a0;
+        color: var(--fg-muted);
         font-size: 0.95em;
     }
     
@@ -196,27 +258,27 @@
     }
     
     .positive {
-        color: #82ca9d;
+        color: var(--accent-green);
     }
     
     .negative {
-        color: #ff6b6b;
+        color: var(--accent-red);
     }
     
     .neutral {
-        color: #feca57;
+        color: var(--accent-yellow);
     }
     
     .insights {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         padding: 30px;
         border-radius: 12px;
         margin-top: 40px;
-        border: 1px solid #333;
+        border: 1px solid var(--border);
     }
     
     .insights h2 {
-        color: #feca57;
+        color: var(--accent-yellow);
         margin-top: 0;
         font-size: 1.7em;
         font-weight: 600;
@@ -224,43 +286,48 @@
     
     .insights p {
         line-height: 1.7;
-        color: #d0d0d0;
+        color: var(--fg);
         margin: 20px 0;
     }
     
     .highlight {
-        color: #ff6b6b;
+        color: var(--accent-red);
         font-weight: 600;
     }
     
     .warning-text {
-        color: #feca57;
+        color: var(--accent-yellow);
         font-weight: 600;
     }
     
     .success-text {
-        color: #82ca9d;
+        color: var(--accent-green);
         font-weight: 600;
     }
     
     .solutions-box {
-        background: #2c2c2c;
+        background: var(--bg);
         padding: 25px;
         border-radius: 10px;
         margin: 25px 0;
-        border: 1px solid #4dabf7;
+        border: 1px solid var(--accent-blue);
     }
     
     .solutions-box h3 {
-        color: #4dabf7;
+        color: var(--accent-blue);
         margin-top: 0;
         font-size: 1.4em;
+    }
+    
+    .solutions-box ul {
+        color: var(--fg);
+        line-height: 1.7;
     }
     
     .footnote {
         text-align: center;
         font-size: 0.85em;
-        color: #888;
+        color: var(--fg-muted);
         margin-top: 30px;
         line-height: 1.5;
     }
@@ -285,6 +352,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        color: var(--fg);
     }
     
     .legend-color {
@@ -295,15 +363,36 @@
     
     table {
         font-size: 1.05em;
+        width: 100%;
+        color: var(--fg);
+        border-collapse: collapse;
     }
     
     table th {
         background: rgba(255, 255, 255, 0.05);
         font-weight: 600;
+        padding: 10px;
+        text-align: left;
+    }
+
+    @media (prefers-color-scheme: light) {
+        table th {
+            background: rgba(0, 0, 0, 0.05);
+        }
     }
     
     table tr:hover {
         background: rgba(255, 255, 255, 0.02);
+    }
+
+    @media (prefers-color-scheme: light) {
+        table tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+    }
+    
+    table td {
+        padding: 10px;
     }
     
     @media (max-width: 600px) {
@@ -316,18 +405,24 @@
     }
     
     .more-analysis {
-        background: #1a1a1a;
+        background: var(--bg-secondary);
         padding: 40px;
         border-radius: 12px;
         margin: 40px auto;
         max-width: 900px;
         text-align: center;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        border: 1px solid #333;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .more-analysis {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
     }
     
     .more-analysis h3 {
-        color: #feca57;
+        color: var(--accent-yellow);
         margin-bottom: 20px;
         font-size: 1.4em;
     }
@@ -337,23 +432,36 @@
         padding: 20px;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid;
-        color: #fff;
+        color: var(--fg);
         text-decoration: none;
         border-radius: 10px;
         transition: all 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: light) {
+        .more-analysis a {
+            background: rgba(0, 0, 0, 0.02);
+        }
     }
     
     .more-analysis a:hover {
         transform: translateY(-3px);
         background: rgba(255, 255, 255, 0.08);
     }
+
+    @media (prefers-color-scheme: light) {
+        .more-analysis a:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
     
     .more-analysis h4 {
         margin-bottom: 10px;
+        color: var(--fg);
     }
     
     .more-analysis p {
-        color: #d0d0d0;
+        color: var(--fg-muted);
         font-size: 0.95em;
         line-height: 1.5;
         margin: 0;
@@ -517,7 +625,7 @@
             <p>
                 La convergencia requiere cambios estructurales profundos, no ajustes marginales:
             </p>
-            <ul style="color: #d0d0d0; line-height: 1.7;">
+            <ul>
                 <li><strong>Capital humano</strong>: Formación técnica y científica, no titulaciones sin valor de mercado</li>
                 <li><strong>Marco regulatorio</strong>: Reducción de trabas burocráticas y costes de crear empresa</li>
                 <li><strong>Sistema fiscal</strong>: Menor presión sobre el trabajo y capital productivo</li>
@@ -536,31 +644,31 @@
             la divergencia podría convertirse en crisis. El tiempo para reformas graduales se agota.
         </p>
 
-        <div style="background: #2c2c2c; padding: 25px; border-radius: 10px; margin: 30px 0; border: 1px solid #444;">
-            <h4 style="color: #4dabf7; margin-bottom: 20px;">Nota metodológica: Valores nominales vs reales</h4>
-            <table style="width: 100%; color: #d0d0d0; border-collapse: collapse;">
+        <div style="background: var(--bg); padding: 25px; border-radius: 10px; margin: 30px 0; border: 1px solid #444;">
+            <h4 style="color: var(--accent-blue); margin-bottom: 20px;">Nota metodológica: Valores nominales vs reales</h4>
+            <table>
                 <tr style="border-bottom: 2px solid #555;">
-                    <th style="padding: 10px; text-align: left;">Indicador (España 2024)</th>
-                    <th style="padding: 10px; text-align: center;">Valor Nominal</th>
-                    <th style="padding: 10px; text-align: center;">Valor Real (€ 2015)</th>
+                    <th>Indicador (España 2024)</th>
+                    <th style="text-align: center;">Valor Nominal</th>
+                    <th style="text-align: center;">Valor Real (€ 2015)</th>
                 </tr>
                 <tr style="border-bottom: 1px solid #333;">
-                    <td style="padding: 10px;">PIB per cápita</td>
-                    <td style="padding: 10px; text-align: center;">33.700€</td>
-                    <td style="padding: 10px; text-align: center;">28.560€</td>
+                    <td>PIB per cápita</td>
+                    <td style="text-align: center;">33.700€</td>
+                    <td style="text-align: center;">28.560€</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #333;">
-                    <td style="padding: 10px;">Deuda per cápita</td>
-                    <td style="padding: 10px; text-align: center;">34.300€</td>
-                    <td style="padding: 10px; text-align: center;">29.070€</td>
+                    <td>Deuda per cápita</td>
+                    <td style="text-align: center;">34.300€</td>
+                    <td style="text-align: center;">29.070€</td>
                 </tr>
                 <tr>
-                    <td style="padding: 10px;">Intereses por persona/año</td>
-                    <td style="padding: 10px; text-align: center;">840€</td>
-                    <td style="padding: 10px; text-align: center;">712€</td>
+                    <td>Intereses por persona/año</td>
+                    <td style="text-align: center;">840€</td>
+                    <td style="text-align: center;">712€</td>
                 </tr>
             </table>
-            <p style="color: #999; font-size: 0.9em; margin-top: 15px; margin-bottom: 0; font-style: italic;">
+            <p style="color: var(--fg-muted); font-size: 0.9em; margin-top: 15px; margin-bottom: 0; font-style: italic;">
                 Deflactor PIB 2024/2015: 1,18. Todos los gráficos usan valores reales (volúmenes encadenados base 2015) 
                 para permitir comparaciones temporales válidas.
             </p>
@@ -578,14 +686,14 @@
     <div class="more-analysis">
         <h3>Continúe el análisis</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px;">
-            <a href="./espana.html" style="border-color: #ff6b6b;">
-                <h4 style="color: #ff6b6b;">📊 Análisis Detallado España</h4>
+            <a href="./espana.html" style="border-color: var(--accent-red);">
+                <h4 style="color: var(--accent-red);">📊 Análisis Detallado España</h4>
                 <p>
                     PIB estancado vs Deuda triplicada. Impacto en poder adquisitivo y sostenibilidad fiscal.
                 </p>
             </a>
-            <a href="./index.html" style="border-color: #feca57;">
-                <h4 style="color: #feca57;">🏠 Volver al Inicio</h4>
+            <a href="./index.html" style="border-color: var(--accent-yellow);">
+                <h4 style="color: var(--accent-yellow);">🏠 Volver al Inicio</h4>
                 <p>
                     Resumen ejecutivo y acceso a todos los análisis disponibles.
                 </p>
@@ -631,11 +739,10 @@
         scales: {
             x: {
                 grid: {
-                    color: 'rgba(255, 255, 255, 0.1)',
-                    borderColor: 'rgba(255, 255, 255, 0.2)'
+                    color: '#333'
                 },
                 ticks: {
-                    color: '#a0a0a0',
+                    color: '#b0b0b0',
                     font: {
                         size: 11
                     }
@@ -643,11 +750,10 @@
             },
             y: {
                 grid: {
-                    color: 'rgba(255, 255, 255, 0.1)',
-                    borderColor: 'rgba(255, 255, 255, 0.2)'
+                    color: '#444'
                 },
                 ticks: {
-                    color: '#a0a0a0',
+                    color: '#b0b0b0',
                     font: {
                         size: 11
                     }
@@ -702,7 +808,7 @@
                 title: {
                     display: true,
                     text: 'PIB per Cápita Real (2008 = 100)',
-                    color: '#e0e0e0',
+                    color: '#f0f0f0',
                     font: {
                         size: 15,
                         weight: '600'
@@ -729,7 +835,7 @@
                     title: {
                         display: true,
                         text: 'Índice (2008 = 100)',
-                        color: '#a0a0a0',
+                        color: '#b0b0b0',
                         font: {
                             size: 12
                         }
@@ -739,7 +845,7 @@
         }
     });
 
-    // Gráfico Deuda/PIB
+    // Gráfico Deuda/PIB con cambios importantes
     const ctxDebt = document.getElementById('debtChart').getContext('2d');
     const debtChart = new Chart(ctxDebt, {
         type: 'line',
@@ -778,6 +884,7 @@
                 }
             ]
         },
+        plugins: [window['chartjs-plugin-annotation']],
         options: {
             ...commonOptions,
             plugins: {
@@ -785,7 +892,7 @@
                 title: {
                     display: true,
                     text: 'Deuda Pública / PIB (%)',
-                    color: '#e0e0e0',
+                    color: '#f0f0f0',
                     font: {
                         size: 15,
                         weight: '600'
@@ -801,18 +908,41 @@
                             return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}% (${sign}${change} p.p. desde 2008)`;
                         }
                     }
+                },
+                annotation: {
+                    annotations: {
+                        line2007: {
+                            type: 'line',
+                            yMin: 35.5,
+                            yMax: 35.5,
+                            borderColor: '#888',
+                            borderWidth: 2,
+                            borderDash: [6, 4],
+                            label: {
+                                enabled: true,
+                                content: '35.5% (España 2007)',
+                                position: 'start',
+                                backgroundColor: 'rgba(0,0,0,0.8)',
+                                color: '#fff',
+                                padding: 4,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
                 }
             },
             scales: {
                 ...commonOptions.scales,
                 y: {
                     ...commonOptions.scales.y,
-                    min: 30,
+                    suggestedMin: 0,  // Empieza en 0 para ver la montaña completa
                     max: 130,
                     title: {
                         display: true,
                         text: 'Deuda / PIB (%)',
-                        color: '#a0a0a0',
+                        color: '#b0b0b0',
                         font: {
                             size: 12
                         }
