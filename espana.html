@@ -9,23 +9,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         :root {
+            --bg: #121212;
+            --bg-secondary: #1e1e1e;
+            --fg: #f0f0f0;
+            --fg-muted: #b0b0b0;
+            --accent-red: #ff6b6b;
+            --accent-yellow: #feca57;
+            --accent-blue: #4dabf7;
+            --accent-green: #82ca9d;
+            --border: #333;
             color-scheme: dark;
         }
 
 ```
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --fg: #222222;
+            --fg-muted: #666666;
+            --accent-red: #d32f2f;
+            --accent-yellow: #f57c00;
+            --accent-blue: #1976d2;
+            --accent-green: #388e3c;
+            --border: #ddd;
+        }
+    }
+    
     body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         margin: 0;
         padding: 20px;
-        background-color: #1a1a1a;
-        color: #e0e0e0;
+        background-color: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
     }
     
     .nav-bar {
         background: #0a0a0a;
         padding: 15px 0;
         margin: -20px -20px 20px -20px;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .nav-bar {
+            background: #f8f8f8;
+        }
     }
     
     .nav-container {
@@ -40,7 +70,7 @@
     .nav-brand {
         font-size: 1.2em;
         font-weight: 600;
-        color: #ff6b6b;
+        color: var(--accent-red);
         text-decoration: none;
     }
     
@@ -51,7 +81,7 @@
     }
     
     .nav-link {
-        color: #a0a0a0;
+        color: var(--fg-muted);
         text-decoration: none;
         padding: 8px 16px;
         border-radius: 20px;
@@ -61,11 +91,17 @@
     
     .nav-link:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: #fff;
+        color: var(--fg);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
     }
     
     .nav-link.active {
-        background: #ff6b6b;
+        background: var(--accent-red);
         color: #fff;
     }
     
@@ -86,9 +122,20 @@
         padding-top: 20px;
     }
     
+    h1, h2, h3 {
+        color: #ffffff;
+        letter-spacing: .5px;
+    }
+
+    @media (prefers-color-scheme: light) {
+        h1, h2, h3 {
+            color: var(--fg);
+        }
+    }
+    
     h1 {
         text-align: center;
-        color: #ff6b6b;
+        color: var(--accent-red);
         font-size: 2.5em;
         margin-bottom: 15px;
         font-weight: 700;
@@ -96,7 +143,7 @@
     
     .subtitle {
         text-align: center;
-        color: #d0d0d0;
+        color: var(--fg);
         font-size: 1.2em;
         margin-bottom: 30px;
         max-width: 800px;
@@ -106,7 +153,7 @@
     
     .context-note {
         text-align: center;
-        color: #b0b0b0;
+        color: var(--fg-muted);
         font-size: 1.05em;
         margin-bottom: 40px;
         max-width: 800px;
@@ -118,11 +165,18 @@
     .chart-container {
         position: relative;
         height: 500px;
-        background: #2c2c2c;
+        background: var(--bg-secondary);
         padding: 25px;
         border-radius: 12px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         margin-bottom: 40px;
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .chart-container {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
     }
     
     .metrics {
@@ -133,12 +187,18 @@
     }
     
     .metric-card {
-        background: #2c2c2c;
+        background: var(--bg-secondary);
         padding: 25px;
         border-radius: 10px;
         text-align: center;
         box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        border: 1px solid #333;
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .metric-card {
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
     }
     
     .metric-value {
@@ -148,7 +208,7 @@
     }
     
     .metric-label {
-        color: #b0b0b0;
+        color: var(--fg-muted);
         font-size: 0.95em;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -156,21 +216,28 @@
     
     .metric-note {
         font-size: 0.8em;
-        color: #999;
+        color: var(--fg-muted);
         margin-top: 8px;
     }
     
     .cost-comparison {
-        background: #2c2c2c;
+        background: var(--bg-secondary);
         padding: 30px;
         border-radius: 12px;
         margin: 40px 0;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .cost-comparison {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
     }
     
     .cost-comparison h2 {
         text-align: center;
-        color: #feca57;
+        color: var(--accent-yellow);
         margin-bottom: 30px;
         font-size: 1.7em;
         font-weight: 600;
@@ -206,11 +273,12 @@
     }
     
     .cost-item {
-        background: #1a1a1a;
+        background: var(--bg);
         padding: 20px;
         border-radius: 8px;
         margin-bottom: 20px;
         position: relative;
+        border: 1px solid var(--border);
     }
     
     .cost-icon {
@@ -220,7 +288,7 @@
     
     .cost-label {
         font-size: 1em;
-        color: #b0b0b0;
+        color: var(--fg-muted);
         margin-bottom: 10px;
     }
     
@@ -228,13 +296,14 @@
         font-size: 1.8em;
         font-weight: bold;
         margin-bottom: 5px;
+        color: var(--fg);
     }
     
     .cost-change {
         position: absolute;
         top: 10px;
         right: 10px;
-        background: #ff6b6b;
+        background: var(--accent-red);
         color: #fff;
         padding: 5px 10px;
         border-radius: 15px;
@@ -244,37 +313,47 @@
     
     .real-impact {
         text-align: center;
-        background: #1a1a1a;
+        background: var(--bg);
         padding: 20px;
         border-radius: 8px;
-        border: 1px solid #ff6b6b;
+        border: 1px solid var(--accent-red);
     }
     
     .real-impact-value {
         font-size: 2.2em;
-        color: #ff6b6b;
+        color: var(--accent-red);
         font-weight: bold;
         margin: 10px 0;
     }
     
     .technical-note {
         font-size: 0.85em;
-        color: #999;
+        color: var(--fg-muted);
         text-align: left;
         margin-top: 25px;
         line-height: 1.5;
     }
     
+    .salary-disclaimer {
+        background: rgba(254, 202, 87, 0.1);
+        border: 1px solid var(--accent-yellow);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-size: 0.9em;
+        line-height: 1.6;
+    }
+    
     .explanation {
-        background: #2c2c2c;
+        background: var(--bg-secondary);
         padding: 30px;
         border-radius: 10px;
         margin-top: 40px;
-        border: 1px solid #333;
+        border: 1px solid var(--border);
     }
     
     .explanation h2 {
-        color: #feca57;
+        color: var(--accent-yellow);
         margin-top: 0;
         font-size: 1.6em;
         font-weight: 600;
@@ -282,17 +361,17 @@
     
     .explanation p {
         line-height: 1.7;
-        color: #d0d0d0;
+        color: var(--fg);
         margin: 15px 0;
     }
     
     .highlight {
-        color: #ff6b6b;
+        color: var(--accent-red);
         font-weight: 600;
     }
     
     .warning-text {
-        color: #feca57;
+        color: var(--accent-yellow);
         font-weight: 600;
     }
     
@@ -314,7 +393,7 @@
         display: inline-block;
         margin-right: 10px;
         transition: transform 0.3s ease;
-        color: #4dabf7;
+        color: var(--accent-blue);
     }
     
     details[open] summary::before {
@@ -322,11 +401,12 @@
     }
     
     details summary:hover {
-        color: #6db8f9;
+        color: var(--accent-blue);
     }
     
     details h4 {
         font-size: 1.1em;
+        color: var(--accent-yellow);
     }
     
     details ul {
@@ -338,23 +418,30 @@
     }
     
     .next-analysis {
-        background: #2c2c2c;
+        background: var(--bg-secondary);
         padding: 35px;
         border-radius: 12px;
         margin: 40px auto;
         max-width: 800px;
         text-align: center;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        border: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: light) {
+        .next-analysis {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
     }
     
     .next-analysis h3 {
-        color: #4dabf7;
+        color: var(--accent-blue);
         margin-bottom: 15px;
         font-size: 1.4em;
     }
     
     .next-analysis p {
-        color: #d0d0d0;
+        color: var(--fg);
         margin-bottom: 25px;
         line-height: 1.6;
     }
@@ -362,7 +449,7 @@
     .next-analysis a {
         display: inline-block;
         padding: 15px 40px;
-        background: #4dabf7;
+        background: var(--accent-blue);
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
@@ -429,25 +516,25 @@
     <div class="metrics">
         <div class="metric-card">
             <div class="metric-label">PIB per cápita real</div>
-            <div class="metric-value" style="color: #ff6b6b;">+3,2%</div>
+            <div class="metric-value" style="color: var(--accent-red);">+3,2%</div>
             <div class="metric-label">Variación 2008-2024</div>
             <div class="metric-note">(Euros constantes 2015)</div>
         </div>
         <div class="metric-card">
             <div class="metric-label">Deuda per cápita real</div>
-            <div class="metric-value" style="color: #feca57;">+211%</div>
+            <div class="metric-value" style="color: var(--accent-yellow);">+211%</div>
             <div class="metric-label">Incremento desde 2008</div>
             <div class="metric-note">(Euros constantes 2015)</div>
         </div>
         <div class="metric-card">
             <div class="metric-label">Ratio Deuda/PIB</div>
-            <div class="metric-value" style="color: #ff6b6b;">101,8%</div>
+            <div class="metric-value" style="color: var(--accent-red);">101,8%</div>
             <div class="metric-label">2024 (era 35,5% en 2007)</div>
             <div class="metric-note">(Criterios EDP)</div>
         </div>
         <div class="metric-card">
             <div class="metric-label">Intereses anuales</div>
-            <div class="metric-value" style="color: #feca57;">712€</div>
+            <div class="metric-value" style="color: var(--accent-yellow);">712€</div>
             <div class="metric-label">Por español al año</div>
             <div class="metric-note">(Euros constantes 2015)</div>
         </div>
@@ -474,7 +561,7 @@
                 </div>
                 <div class="cost-item">
                     <div class="cost-icon">💰</div>
-                    <div class="cost-label">Salario medio neto mensual*</div>
+                    <div class="cost-label">Salario medio neto mensual (mediana EPA, trabajador FT, después de IRPF + SS, valores nominales)</div>
                     <div class="cost-value">1.755€</div>
                 </div>
             </div>
@@ -494,7 +581,7 @@
                 </div>
                 <div class="cost-item">
                     <div class="cost-icon">💰</div>
-                    <div class="cost-label">Salario medio neto mensual*</div>
+                    <div class="cost-label">Salario medio neto mensual (mediana EPA, trabajador FT, después de IRPF + SS, valores nominales)</div>
                     <div class="cost-value">2.129€</div>
                     <div class="cost-change">+21%</div>
                 </div>
@@ -505,24 +592,25 @@
             <div class="real-impact-value">-121€</div>
             <div class="metric-label">2008: +505€/mes → 2024: -121€/mes (déficit familiar)</div>
         </div>
+        <div class="salary-disclaimer">
+            <strong>Nota sobre el cálculo del salario neto:</strong><br>
+            2008: €1.755 → 2024: €2.129 (nominal)<br>
+            Fuente: EPA (Tabla 7308). 'Neto' calculado con la herramienta de retenciones AEAT 2008 vs 2024, soltero sin hijos. 
+            Si lo deflactas a € 2015, el poder adquisitivo cae un -5%. Ver repositorio para detalle de cálculo.
+        </div>
         <p class="technical-note">
-            * Salario medio neto mensual: Datos EPA, trabajador a tiempo completo, 
-            después de IRPF y cotizaciones sociales. Valores nominales (no deflactados).
-            Para comparación real: 1.755€ (2008) equivaldrían a 2.242€ en 2024 
-            ajustados por IPC, pero el salario real es 2.129€ (-5% pérdida poder adquisitivo).
-            <br><br>
             Fuentes: INE Contabilidad Nacional Trimestral (base 2015), INE Padrón Continuo (enero 2025), 
             Banco de España Notificación EDP (dic-24) y Boletín Estadístico (ene-25), Eurostat nama_10_pc, 
             Idealista (precio alquiler Madrid), INE IPC-Alimentación, INE EPA.
         </p>
     </div>
 
-    <details style="background: #1a1a1a; padding: 25px; border-radius: 12px; margin: 40px 0; border: 1px solid #333;">
-        <summary style="cursor: pointer; color: #4dabf7; font-weight: bold; font-size: 1.2em; padding: 10px 0;">
+    <details style="background: var(--bg); padding: 25px; border-radius: 12px; margin: 40px 0; border: 1px solid var(--border);">
+        <summary style="cursor: pointer; color: var(--accent-blue); font-weight: bold; font-size: 1.2em; padding: 10px 0;">
             📊 Metodología y fuentes detalladas (click para expandir)
         </summary>
-        <div style="margin-top: 25px; color: #d0d0d0; line-height: 1.7;">
-            <h4 style="color: #feca57; margin-bottom: 15px;">Unidades y deflactores</h4>
+        <div style="margin-top: 25px; color: var(--fg); line-height: 1.7;">
+            <h4 style="margin-bottom: 15px;">Unidades y deflactores</h4>
             <ul style="margin-bottom: 25px;">
                 <li>PIB real: Volúmenes encadenados base 2015 (INE)</li>
                 <li>Deflactor PIB 2024/2015: 1,18</li>
@@ -530,29 +618,29 @@
                 <li>Conversión nominal/real: Deflactor implícito del PIB</li>
             </ul>
             
-            <h4 style="color: #feca57; margin-bottom: 15px;">Salarios</h4>
+            <h4 style="margin-bottom: 15px;">Salarios</h4>
             <ul style="margin-bottom: 25px;">
                 <li>Fuente: EPA, decil 5 (mediana)</li>
                 <li>Valores: Neto mensual después de IRPF y SS</li>
                 <li>Ajuste: Trabajador tiempo completo</li>
             </ul>
             
-            <h4 style="color: #feca57; margin-bottom: 15px;">Vivienda</h4>
+            <h4 style="margin-bottom: 15px;">Vivienda</h4>
             <ul style="margin-bottom: 25px;">
                 <li>Fuente: Idealista, precio mediano alquiler Madrid</li>
                 <li>Tipología: 3 habitaciones, 80-90m²</li>
                 <li>Zona: Media ponderada todos los distritos</li>
             </ul>
             
-            <h4 style="color: #feca57; margin-bottom: 15px;">Deuda e intereses</h4>
+            <h4 style="margin-bottom: 15px;">Deuda e intereses</h4>
             <ul style="margin-bottom: 25px;">
                 <li>Deuda: Protocolo Déficit Excesivo (EDP)</li>
                 <li>Intereses: Banco de España, PDE.9.3</li>
                 <li>Población: Padrón continuo INE</li>
             </ul>
 
-            <div style="background: rgba(254, 202, 87, 0.1); padding: 20px; border-radius: 10px; margin-top: 25px; border: 1px solid #feca57;">
-                <h4 style="color: #feca57; margin-top: 0;">Nota sobre la analogía familiar</h4>
+            <div style="background: rgba(254, 202, 87, 0.1); padding: 20px; border-radius: 10px; margin-top: 25px; border: 1px solid var(--accent-yellow);">
+                <h4 style="margin-top: 0;">Nota sobre la analogía familiar</h4>
                 <p style="margin-bottom: 15px;">
                     Para ilustrar el impacto del empobrecimiento, trasladamos los datos macroeconómicos 
                     a una familia española mediana:
@@ -564,7 +652,7 @@
                     <li><strong>Deuda inicial</strong>: 8.500€ (28% de ingresos, como ratio deuda/PIB 2008)</li>
                     <li><strong>Deuda final</strong>: 26.400€ (85% de ingresos, proporcional al aumento nacional)</li>
                 </ul>
-                <p style="color: #feca57; font-style: italic; margin-top: 15px; margin-bottom: 0;">
+                <p style="color: var(--accent-yellow); font-style: italic; margin-top: 15px; margin-bottom: 0;">
                     Nota: Esta es una simplificación ilustrativa. La distribución real de renta y deuda 
                     varía significativamente entre hogares.
                 </p>
@@ -649,7 +737,7 @@
                 title: {
                     display: true,
                     text: 'PIB Estancado vs Deuda Disparada: España 2008-2024 (Euros Constantes 2015)',
-                    color: '#e0e0e0',
+                    color: '#f0f0f0',
                     font: {
                         size: 18,
                         weight: '600'
@@ -660,7 +748,7 @@
                     display: true,
                     position: 'top',
                     labels: {
-                        color: '#e0e0e0',
+                        color: '#f0f0f0',
                         font: {
                             size: 14
                         },
@@ -670,7 +758,7 @@
                 tooltip: {
                     backgroundColor: 'rgba(30, 30, 30, 0.9)',
                     titleColor: '#fff',
-                    bodyColor: '#e0e0e0',
+                    bodyColor: '#f0f0f0',
                     borderColor: '#666',
                     borderWidth: 1,
                     padding: 12,
