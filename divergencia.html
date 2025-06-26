@@ -1,262 +1,366 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>España vs UE vs USA: La Gran Divergencia Económica (2008-2024)</title>
-    <meta name="description" content="Análisis comparativo del PIB per cápita y deuda pública de España, UE-27 y USA desde la crisis de 2008. Datos oficiales y visualizaciones interactivas.">
-    <meta name="keywords" content="economía España, PIB per cápita, deuda pública, comparación internacional, crisis económica, divergencia europea">
-    <meta name="author" content="Análisis Económico Independiente">
-    <meta property="og:title" content="España vs UE vs USA: La Gran Divergencia">
-    <meta property="og:description" content="Cómo España se quedó atrás mientras otros prosperaban (2008-2024)">
-    <meta property="og:type" content="article">
+    <title>España vs UE vs USA: Análisis Comparativo 2008-2024</title>
+    <meta name="description" content="Divergencia económica: España +3.2%, UE-27 +18.5%, USA +25.3% en PIB per cápita real. Datos oficiales Eurostat y FRED.">
+    <meta name="keywords" content="España vs Europa, divergencia económica, PIB per cápita comparación, productividad">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         :root {
             color-scheme: dark;
         }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-        }
-        /* Estilos de navegación */
-        .nav-bar {
-            background: #000;
-            padding: 15px 0;
-            margin: -20px -20px 20px -20px;
-            border-bottom: 1px solid #333;
-        }
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #0a0a0a;
+        color: #e0e0e0;
+    }
+    
+    .nav-bar {
+        background: #000;
+        padding: 15px 0;
+        margin: -20px -20px 20px -20px;
+        border-bottom: 1px solid #333;
+    }
+    
+    .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-brand {
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #ff6b6b;
+        text-decoration: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .nav-link {
+        color: #a0a0a0;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-size: 0.95em;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+    
+    .nav-link.active {
+        background: #4dabf7;
+        color: #fff;
+    }
+    
+    @media (max-width: 768px) {
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-brand {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #ff6b6b;
-            text-decoration: none;
+            flex-direction: column;
+            gap: 15px;
         }
         .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        .nav-link {
-            color: #a0a0a0;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-        }
-        .nav-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
-        .nav-link.active {
-            background: #4dabf7;
-            color: #fff;
-        }
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #ff6b6b;
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-        }
-        .subtitle {
-            text-align: center;
-            color: #feca57;
-            font-size: 1.4em;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .context-note {
-            text-align: center;
-            color: #a0a0a0;
-            font-size: 1.1em;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
+    }
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+    
+    h1 {
+        text-align: center;
+        color: #ff6b6b;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+    
+    .subtitle {
+        text-align: center;
+        color: #d0d0d0;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    
+    .context-note {
+        text-align: center;
+        color: #a0a0a0;
+        font-size: 1.05em;
+        margin-bottom: 40px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+    }
+    
+    .charts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+    
+    @media (max-width: 1200px) {
         .charts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        @media (max-width: 1200px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-            .chart-container {
-                height: 400px !important;
-            }
+            grid-template-columns: 1fr;
         }
         .chart-container {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            height: 450px;
+            height: 400px !important;
         }
-        .key-metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .country-card {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .country-card.spain {
-            border-color: #ff6b6b;
-        }
-        .country-card.eu {
-            border-color: #4dabf7;
-        }
-        .country-card.usa {
-            border-color: #82ca9d;
-        }
-        .country-name {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            display: flex;
+    }
+    
+    .chart-container {
+        background: #1a1a1a;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        height: 450px;
+    }
+    
+    .key-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .country-card {
+        background: #1a1a1a;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.4);
+        border: 1px solid #333;
+    }
+    
+    .country-card.spain {
+        border-color: #ff6b6b;
+    }
+    
+    .country-card.eu {
+        border-color: #4dabf7;
+    }
+    
+    .country-card.usa {
+        border-color: #82ca9d;
+    }
+    
+    .country-name {
+        font-size: 1.6em;
+        font-weight: bold;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .flag {
+        font-size: 1.3em;
+    }
+    
+    .metric-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        padding: 8px 0;
+        border-bottom: 1px solid #333;
+    }
+    
+    .metric-label {
+        color: #a0a0a0;
+        font-size: 0.95em;
+    }
+    
+    .metric-value {
+        font-weight: 600;
+        font-size: 1.05em;
+    }
+    
+    .positive {
+        color: #82ca9d;
+    }
+    
+    .negative {
+        color: #ff6b6b;
+    }
+    
+    .neutral {
+        color: #feca57;
+    }
+    
+    .insights {
+        background: #1a1a1a;
+        padding: 30px;
+        border-radius: 12px;
+        margin-top: 40px;
+        border: 1px solid #333;
+    }
+    
+    .insights h2 {
+        color: #feca57;
+        margin-top: 0;
+        font-size: 1.7em;
+        font-weight: 600;
+    }
+    
+    .insights p {
+        line-height: 1.7;
+        color: #d0d0d0;
+        margin: 20px 0;
+    }
+    
+    .highlight {
+        color: #ff6b6b;
+        font-weight: 600;
+    }
+    
+    .warning-text {
+        color: #feca57;
+        font-weight: 600;
+    }
+    
+    .success-text {
+        color: #82ca9d;
+        font-weight: 600;
+    }
+    
+    .solutions-box {
+        background: #2c2c2c;
+        padding: 25px;
+        border-radius: 10px;
+        margin: 25px 0;
+        border: 1px solid #4dabf7;
+    }
+    
+    .solutions-box h3 {
+        color: #4dabf7;
+        margin-top: 0;
+        font-size: 1.4em;
+    }
+    
+    .footnote {
+        text-align: center;
+        font-size: 0.85em;
+        color: #888;
+        margin-top: 30px;
+        line-height: 1.5;
+    }
+    
+    .legend-custom {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+    }
+    
+    @media (max-width: 600px) {
+        .legend-custom {
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
-        .flag {
-            font-size: 1.5em;
-        }
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-        }
-        .metric-label {
-            color: #a0a0a0;
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .legend-color {
+        width: 30px;
+        height: 4px;
+        border-radius: 2px;
+    }
+    
+    table {
+        font-size: 1.05em;
+    }
+    
+    table th {
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 600;
+    }
+    
+    table tr:hover {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    
+    @media (max-width: 600px) {
+        table {
             font-size: 0.95em;
         }
-        .metric-value {
-            font-weight: bold;
-            font-size: 1.1em;
+        table th, table td {
+            padding: 8px !important;
         }
-        .positive {
-            color: #82ca9d;
-        }
-        .negative {
-            color: #ff6b6b;
-        }
-        .neutral {
-            color: #feca57;
-        }
-        .insights {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 40px;
-            border-left: 4px solid #ff6b6b;
-        }
-        .insights h2 {
-            color: #feca57;
-            margin-top: 0;
-            font-size: 1.8em;
-        }
-        .insights p {
-            line-height: 1.8;
-            color: #d0d0d0;
-            margin: 15px 0;
-            font-size: 1.05em;
-        }
-        .highlight {
-            color: #ff6b6b;
-            font-weight: bold;
-        }
-        .warning-text {
-            color: #feca57;
-            font-weight: bold;
-        }
-        .success-text {
-            color: #82ca9d;
-            font-weight: bold;
-        }
-        .solutions-box {
-            background: #2c2c2c;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 1px solid #4dabf7;
-        }
-        .solutions-box h3 {
-            color: #4dabf7;
-            margin-top: 0;
-        }
-        .footnote {
-            text-align: center;
-            font-size: 0.85em;
-            color: #888;
-            margin-top: 30px;
-            font-style: italic;
-            line-height: 1.5;
-        }
-        .legend-custom {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        @media (max-width: 600px) {
-            .legend-custom {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .legend-color {
-            width: 30px;
-            height: 4px;
-            border-radius: 2px;
-        }
-    </style>
+    }
+    
+    .more-analysis {
+        background: #1a1a1a;
+        padding: 40px;
+        border-radius: 12px;
+        margin: 40px auto;
+        max-width: 900px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        border: 1px solid #333;
+    }
+    
+    .more-analysis h3 {
+        color: #feca57;
+        margin-bottom: 20px;
+        font-size: 1.4em;
+    }
+    
+    .more-analysis a {
+        display: block;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .more-analysis a:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .more-analysis h4 {
+        margin-bottom: 10px;
+    }
+    
+    .more-analysis p {
+        color: #d0d0d0;
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin: 0;
+    }
+</style>
+```
+
 </head>
 <body>
     <nav class="nav-bar">
@@ -264,265 +368,367 @@
             <a href="./index.html" class="nav-brand">📊 Análisis Económico España</a>
             <div class="nav-links">
                 <a href="./index.html" class="nav-link">Inicio</a>
-                <a href="./espana.html" class="nav-link">Empobrecimiento</a>
+                <a href="./espana.html" class="nav-link">Datos España</a>
                 <a href="./divergencia.html" class="nav-link active">Comparación Internacional</a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <h1>España vs UE vs USA: La Gran Divergencia</h1>
-        <p class="subtitle">Cómo España se quedó atrás mientras otros prosperaban (2008-2024)</p>
+```
+<div class="container">
+    <h1>España vs UE vs USA: Análisis Comparativo</h1>
+    <p class="subtitle">Divergencia en PIB per cápita y sostenibilidad fiscal (2008-2024)</p>
+    
+    <p class="context-note">
+        La crisis financiera de 2008 marcó trayectorias divergentes. Mientras unos países reformaron sus economías 
+        y mejoraron su productividad, otros optaron por el endeudamiento sin reformas estructurales.
+    </p>
+    
+    <div class="key-metrics">
+        <div class="country-card spain">
+            <div class="country-name">
+                <span class="flag">🇪🇸</span>
+                España
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">PIB per cápita real</span>
+                <span class="metric-value negative">+3.2%</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Deuda/PIB</span>
+                <span class="metric-value negative">35% → 102%</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Crecimiento anual medio</span>
+                <span class="metric-value negative">0.2%</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Divergencia vs UE</span>
+                <span class="metric-value negative">-15.3 p.p.</span>
+            </div>
+        </div>
         
-        <p class="context-note">
-            Esta comparación comienza en 2008, año de la crisis financiera global que marcó un punto de inflexión para las economías occidentales. 
-            Mientras algunos países usaron la crisis como catalizador para transformar sus economías, otros quedaron atrapados en modelos obsoletos.
-        </p>
+        <div class="country-card eu">
+            <div class="country-name">
+                <span class="flag">🇪🇺</span>
+                UE-27
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">PIB per cápita real</span>
+                <span class="metric-value neutral">+18.5%</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Deuda/PIB</span>
+                <span class="metric-value neutral">60% → 82%</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Crecimiento anual medio</span>
+                <span class="metric-value neutral">1.1%</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Posición</span>
+                <span class="metric-value neutral">Referencia</span>
+            </div>
+        </div>
         
-        <div class="key-metrics">
-            <div class="country-card spain">
-                <div class="country-name">
-                    <span class="flag">🇪🇸</span>
-                    España
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">PIB per cápita real</span>
-                    <span class="metric-value negative">+3.2%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Deuda/PIB</span>
-                    <span class="metric-value negative">35% → 102%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Crecimiento anual</span>
-                    <span class="metric-value negative">0.2%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Divergencia vs UE</span>
-                    <span class="metric-value negative">-15.3 p.p.</span>
-                </div>
+        <div class="country-card usa">
+            <div class="country-name">
+                <span class="flag">🇺🇸</span>
+                Estados Unidos
             </div>
-            
-            <div class="country-card eu">
-                <div class="country-name">
-                    <span class="flag">🇪🇺</span>
-                    UE-27
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">PIB per cápita real</span>
-                    <span class="metric-value neutral">+18.5%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Deuda/PIB</span>
-                    <span class="metric-value neutral">60% → 82%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Crecimiento anual</span>
-                    <span class="metric-value neutral">1.1%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Estatus</span>
-                    <span class="metric-value neutral">Referencia</span>
-                </div>
+            <div class="metric-row">
+                <span class="metric-label">PIB per cápita real</span>
+                <span class="metric-value positive">+25.3%</span>
             </div>
-            
-            <div class="country-card usa">
-                <div class="country-name">
-                    <span class="flag">🇺🇸</span>
-                    Estados Unidos
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">PIB per cápita real</span>
-                    <span class="metric-value positive">+25.3%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Deuda/PIB</span>
-                    <span class="metric-value negative">65% → 123%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Crecimiento anual</span>
-                    <span class="metric-value positive">1.4%</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">Productividad</span>
-                    <span class="metric-value positive">Líder tecnológico</span>
-                </div>
+            <div class="metric-row">
+                <span class="metric-label">Deuda/PIB</span>
+                <span class="metric-value negative">65% → 123%</span>
             </div>
-        </div>
-
-        <div class="charts-grid">
-            <div class="chart-container">
-                <canvas id="gdpChart" aria-label="Gráfico de PIB per cápita real 2008-2024: España vs UE vs USA"></canvas>
+            <div class="metric-row">
+                <span class="metric-label">Crecimiento anual medio</span>
+                <span class="metric-value positive">1.4%</span>
             </div>
-            <div class="chart-container">
-                <canvas id="debtChart" aria-label="Gráfico de deuda pública sobre PIB 2008-2024: España vs UE vs USA"></canvas>
-            </div>
-        </div>
-
-        <div class="legend-custom">
-            <div class="legend-item">
-                <div class="legend-color" style="background: #ff6b6b;"></div>
-                <span>España</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #4dabf7;"></div>
-                <span>UE-27</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #82ca9d;"></div>
-                <span>Estados Unidos</span>
-            </div>
-        </div>
-
-        <div class="insights">
-            <h2>Claves de la Comparación Internacional</h2>
-            
-            <p>
-                <strong>1. El Estancamiento Español es Excepcional</strong><br>
-                Mientras <span class="success-text">Estados Unidos creció un 25.3%</span> y la <span class="warning-text">UE-27 un 18.5%</span> en PIB per cápita real, 
-                <span class="highlight">España apenas logró un 3.2%</span>. Esto significa que un estadounidense medio es hoy 25% más rico que en 2008, 
-                mientras que un español es prácticamente igual de "rico" que hace 16 años.
-            </p>
-            
-            <p>
-                <strong>2. La Trampa de la Deuda Sin Crecimiento</strong><br>
-                Estados Unidos también aumentó su deuda (del 65% al 123% del PIB), pero lo hizo mientras su economía crecía robustamente y mantenía 
-                su liderazgo tecnológico global. <span class="highlight">España triplicó su deuda sin crecimiento que la respalde</span>. 
-                Es la diferencia entre endeudarse para invertir en un negocio próspero y endeudarse para pagar gastos corrientes.
-            </p>
-            
-            <p>
-                <strong>3. La Divergencia se Acelera</strong><br>
-                La brecha entre España y sus socios no se está cerrando, se está ampliando. A este ritmo, 
-                <span class="highlight">España necesitaría 80 años para alcanzar el nivel actual de Estados Unidos</span>, 
-                asumiendo que USA se detuviera hoy (lo cual no ocurrirá).
-            </p>
-            
-            <p>
-                <strong>4. El Modelo Importa</strong><br>
-                USA apostó por innovación, tecnología y productividad. La UE mantuvo su base industrial y modernizó sectores clave. 
-                <span class="highlight">España se aferró a un modelo basado en turismo, construcción y servicios de bajo valor añadido</span>. 
-                Los resultados hablan por sí mismos.
-            </p>
-
-            <div class="solutions-box">
-                <h3>¿Qué puede hacer España?</h3>
-                <p>
-                    La divergencia no es inevitable. Países como Irlanda o Estonia han demostrado que es posible cambiar de trayectoria. España necesita:
-                </p>
-                <ul style="color: #d0d0d0;">
-                    <li><strong>Inversión masiva en educación STEM</strong>: Formar talento para la economía del conocimiento</li>
-                    <li><strong>Política industrial activa</strong>: Apostar por sectores de alto valor añadido</li>
-                    <li><strong>Reforma fiscal pro-productividad</strong>: Incentivar inversión en I+D y tecnología</li>
-                    <li><strong>Digitalización real</strong>: No solo de la administración, sino del tejido productivo</li>
-                    <li><strong>Atracción de inversión productiva</strong>: No especulativa inmobiliaria</li>
-                </ul>
-                <p style="margin-top: 15px;">
-                    Sin cambios estructurales profundos, la italianización de España será inevitable.
-                </p>
-            </div>
-
-            <p>
-                <strong>5. La Ventana se Cierra</strong><br>
-                Con una deuda/PIB del 102%, España se acerca peligrosamente al nivel de Italia (135%) pero sin la base industrial italiana. 
-                <span class="warning-text">Cuando los tipos de interés suban y el BCE retire su apoyo extraordinario</span>, 
-                la divergencia podría convertirse en crisis. El tiempo para reformas graduales se agota.
-            </p>
-        </div>
-
-        <p class="footnote">
-            Fuentes: Eurostat (nama_10_pc, nama_10_gdp), FRED-Federal Reserve Economic Data (GDPC1, GFDEGDQ188S), 
-            INE España (Contabilidad Nacional Trimestral), Banco de España (Boletín Estadístico). 
-            PIB per cápita en euros/dólares constantes 2015 (volúmenes encadenados). 
-            Deuda según criterios del Protocolo de Déficit Excesivo (PDE/EDP).
-            <br>
-            Nota: Datos 2024 basados en información disponible hasta Q3-2024 y proyecciones oficiales.
-        </p>
-        
-        <div class="more-analysis" style="background: #1a1a1a; padding: 40px; border-radius: 15px; margin: 40px auto; max-width: 900px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333;">
-            <h3 style="color: #feca57; margin-bottom: 20px; font-size: 1.5em;">Continúa explorando los datos</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px;">
-                <a href="./espana.html" style="display: block; padding: 20px; background: rgba(255, 107, 107, 0.1); border: 1px solid #ff6b6b; color: #fff; text-decoration: none; border-radius: 15px; transition: all 0.3s ease;" 
-                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(255,107,107,0.3)'" 
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <h4 style="color: #ff6b6b; margin-bottom: 10px;">📊 Análisis Detallado de España</h4>
-                    <p style="color: #d0d0d0; font-size: 0.95em; line-height: 1.5; margin: 0;">
-                        PIB estancado vs Deuda disparada. Descubre cómo afecta a tu vida diaria.
-                    </p>
-                </a>
-                <a href="./index.html" style="display: block; padding: 20px; background: rgba(254, 202, 87, 0.1); border: 1px solid #feca57; color: #fff; text-decoration: none; border-radius: 15px; transition: all 0.3s ease;"
-                   onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(254,202,87,0.3)'" 
-                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <h4 style="color: #feca57; margin-bottom: 10px;">🏠 Volver al Inicio</h4>
-                    <p style="color: #d0d0d0; font-size: 0.95em; line-height: 1.5; margin: 0;">
-                        Explora todos los análisis disponibles sobre la economía española.
-                    </p>
-                </a>
+            <div class="metric-row">
+                <span class="metric-label">Modelo</span>
+                <span class="metric-value positive">Innovación/Productividad</span>
             </div>
         </div>
     </div>
 
-    <script>
-        // Datos para los gráficos
-        const años = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
-        
-        // PIB per cápita real (índice 2008=100) - Corregido dato USA 2024
-        const gdpSpain = [100, 96.3, 95.8, 94.9, 92.1, 90.5, 91.8, 94.8, 97.5, 100.2, 102.3, 103.9, 92.8, 97.6, 102.8, 103.0, 103.2];
-        const gdpEU = [100, 95.8, 97.9, 99.7, 99.2, 99.4, 100.8, 102.9, 104.7, 107.2, 109.3, 110.9, 104.2, 109.8, 113.5, 114.2, 118.5];
-        const gdpUSA = [100, 97.5, 99.8, 101.2, 103.4, 104.9, 107.4, 110.3, 111.8, 114.1, 117.2, 119.8, 115.8, 122.3, 124.5, 125.8, 125.3];
-        
-        // Deuda/PIB (%)
-        const debtSpain = [39.7, 52.8, 60.1, 69.9, 86.3, 95.5, 100.4, 99.0, 98.9, 98.6, 97.5, 95.5, 120.0, 118.7, 113.2, 107.7, 101.8];
-        const debtEU = [60.2, 72.1, 77.9, 79.8, 82.4, 84.0, 84.6, 83.4, 82.0, 79.7, 77.8, 75.7, 87.8, 86.5, 82.6, 81.5, 81.7];
-        const debtUSA = [64.8, 83.5, 93.8, 96.0, 99.0, 99.8, 101.2, 99.5, 105.8, 103.9, 104.3, 106.9, 126.4, 124.7, 119.9, 120.4, 123.0];
+    <div class="charts-grid">
+        <div class="chart-container">
+            <canvas id="gdpChart" aria-label="PIB per cápita real 2008-2024: España vs UE vs USA"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="debtChart" aria-label="Deuda pública sobre PIB 2008-2024: España vs UE vs USA"></canvas>
+        </div>
+    </div>
 
-        // Configuración común para ambos gráficos
-        const commonOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-                intersect: false,
-                mode: 'index'
+    <div class="legend-custom">
+        <div class="legend-item">
+            <div class="legend-color" style="background: #ff6b6b;"></div>
+            <span>España</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #4dabf7;"></div>
+            <span>UE-27</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background: #82ca9d;"></div>
+            <span>Estados Unidos</span>
+        </div>
+    </div>
+
+    <div class="insights">
+        <h2>Análisis de la Divergencia</h2>
+        
+        <p>
+            <strong>1. Estancamiento vs Crecimiento</strong><br>
+            <span class="success-text">Estados Unidos: +25.3%</span> en PIB per cápita real. 
+            <span class="warning-text">UE-27: +18.5%</span>. 
+            <span class="highlight">España: +3.2%</span>. 
+            La divergencia no es coyuntural sino estructural: mientras otros países mejoraron su productividad, 
+            España mantuvo un modelo económico obsoleto.
+        </p>
+        
+        <p>
+            <strong>2. Deuda productiva vs improductiva</strong><br>
+            Estados Unidos aumentó su deuda (65% → 123% del PIB) pero mantuvo el liderazgo tecnológico global 
+            y un crecimiento robusto. <span class="highlight">España triplicó su deuda sin contrapartida en 
+            crecimiento o productividad</span>. Es la diferencia entre inversión y gasto corriente.
+        </p>
+        
+        <p>
+            <strong>3. Divergencia acelerada</strong><br>
+            La brecha no se cierra, se amplía. Con tasas de crecimiento actuales, 
+            <span class="highlight">España necesitaría 80 años para alcanzar el nivel actual de Estados Unidos</span>, 
+            asumiendo que USA permaneciera estático.
+        </p>
+        
+        <p>
+            <strong>4. Modelos económicos divergentes</strong><br>
+            USA: innovación, tecnología, productividad. UE: base industrial sólida, sectores modernizados. 
+            <span class="highlight">España: turismo, construcción, servicios de bajo valor añadido</span>. 
+            La estructura productiva determina el potencial de crecimiento.
+        </p>
+
+        <div class="solutions-box">
+            <h3>Reformas necesarias</h3>
+            <p>
+                La convergencia requiere cambios estructurales profundos, no ajustes marginales:
+            </p>
+            <ul style="color: #d0d0d0; line-height: 1.7;">
+                <li><strong>Capital humano</strong>: Formación técnica y científica, no titulaciones sin valor de mercado</li>
+                <li><strong>Marco regulatorio</strong>: Reducción de trabas burocráticas y costes de crear empresa</li>
+                <li><strong>Sistema fiscal</strong>: Menor presión sobre el trabajo y capital productivo</li>
+                <li><strong>Inversión productiva</strong>: I+D+i real, no subvenciones a sectores obsoletos</li>
+                <li><strong>Mercado laboral</strong>: Flexibilidad y productividad, no rigidez y subsidios</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                Sin reformas estructurales profundas, la italianización de España será inevitable.
+            </p>
+        </div>
+
+        <p>
+            <strong>5. La Ventana se Cierra</strong><br>
+            Con una deuda/PIB del 102%, España se acerca peligrosamente al nivel de Italia (135%) pero sin la base industrial italiana. 
+            <span class="warning-text">Cuando los tipos de interés suban y el BCE retire su apoyo extraordinario</span>, 
+            la divergencia podría convertirse en crisis. El tiempo para reformas graduales se agota.
+        </p>
+
+        <div style="background: #2c2c2c; padding: 25px; border-radius: 10px; margin: 30px 0; border: 1px solid #444;">
+            <h4 style="color: #4dabf7; margin-bottom: 20px;">Nota metodológica: Valores nominales vs reales</h4>
+            <table style="width: 100%; color: #d0d0d0; border-collapse: collapse;">
+                <tr style="border-bottom: 2px solid #555;">
+                    <th style="padding: 10px; text-align: left;">Indicador (España 2024)</th>
+                    <th style="padding: 10px; text-align: center;">Valor Nominal</th>
+                    <th style="padding: 10px; text-align: center;">Valor Real (€ 2015)</th>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 10px;">PIB per cápita</td>
+                    <td style="padding: 10px; text-align: center;">33.700€</td>
+                    <td style="padding: 10px; text-align: center;">28.560€</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 10px;">Deuda per cápita</td>
+                    <td style="padding: 10px; text-align: center;">34.300€</td>
+                    <td style="padding: 10px; text-align: center;">29.070€</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">Intereses por persona/año</td>
+                    <td style="padding: 10px; text-align: center;">840€</td>
+                    <td style="padding: 10px; text-align: center;">712€</td>
+                </tr>
+            </table>
+            <p style="color: #999; font-size: 0.9em; margin-top: 15px; margin-bottom: 0; font-style: italic;">
+                Deflactor PIB 2024/2015: 1,18. Todos los gráficos usan valores reales (volúmenes encadenados base 2015) 
+                para permitir comparaciones temporales válidas.
+            </p>
+        </div>
+    </div>
+
+    <p class="footnote">
+        Fuentes: Eurostat (nama_10_pc, nama_10_gdp, tec00114), FRED-Federal Reserve Economic Data (GDPC1, GFDEGDQ188S), 
+        INE España (Contabilidad Nacional Trimestral), Banco de España (Boletín Estadístico). 
+        PIB per cápita en volúmenes encadenados 2015. Deuda según criterios EDP/Maastricht.
+        <br>
+        Datos 2024: Información disponible hasta Q3-2024 y proyecciones oficiales.
+    </p>
+    
+    <div class="more-analysis">
+        <h3>Continúe el análisis</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px;">
+            <a href="./espana.html" style="border-color: #ff6b6b;">
+                <h4 style="color: #ff6b6b;">📊 Análisis Detallado España</h4>
+                <p>
+                    PIB estancado vs Deuda triplicada. Impacto en poder adquisitivo y sostenibilidad fiscal.
+                </p>
+            </a>
+            <a href="./index.html" style="border-color: #feca57;">
+                <h4 style="color: #feca57;">🏠 Volver al Inicio</h4>
+                <p>
+                    Resumen ejecutivo y acceso a todos los análisis disponibles.
+                </p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const años = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+    
+    // PIB per cápita real (índice 2008=100)
+    const gdpSpain = [100, 96.3, 95.8, 94.9, 92.1, 90.5, 91.8, 94.8, 97.5, 100.2, 102.3, 103.9, 92.8, 97.6, 102.8, 103.0, 103.2];
+    const gdpEU = [100, 95.8, 97.9, 99.7, 99.2, 99.4, 100.8, 102.9, 104.7, 107.2, 109.3, 110.9, 104.2, 109.8, 113.5, 114.2, 118.5];
+    const gdpUSA = [100, 97.5, 99.8, 101.2, 103.4, 104.9, 107.4, 110.3, 111.8, 114.1, 117.2, 119.8, 115.8, 122.3, 124.5, 125.8, 125.3];
+    
+    // Deuda/PIB (%)
+    const debtSpain = [39.7, 52.8, 60.1, 69.9, 86.3, 95.5, 100.4, 99.0, 98.9, 98.6, 97.5, 95.5, 120.0, 118.7, 113.2, 107.7, 101.8];
+    const debtEU = [60.2, 72.1, 77.9, 79.8, 82.4, 84.0, 84.6, 83.4, 82.0, 79.7, 77.8, 75.7, 87.8, 86.5, 82.6, 81.5, 81.7];
+    const debtUSA = [64.8, 83.5, 93.8, 96.0, 99.0, 99.8, 101.2, 99.5, 105.8, 103.9, 104.3, 106.9, 126.4, 124.7, 119.9, 120.4, 123.0];
+
+    const commonOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+            intersect: false,
+            mode: 'index'
+        },
+        plugins: {
+            legend: {
+                display: false
             },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#555',
+                borderWidth: 1,
+                padding: 10,
+                displayColors: true
+            }
+        },
+        scales: {
+            x: {
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)'
+                },
+                ticks: {
+                    color: '#a0a0a0',
+                    font: {
+                        size: 11
+                    }
+                }
+            },
+            y: {
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)'
+                },
+                ticks: {
+                    color: '#a0a0a0',
+                    font: {
+                        size: 11
+                    }
+                }
+            }
+        }
+    };
+
+    // Gráfico PIB per cápita
+    const ctxGDP = document.getElementById('gdpChart').getContext('2d');
+    const gdpChart = new Chart(ctxGDP, {
+        type: 'line',
+        data: {
+            labels: años,
+            datasets: [
+                {
+                    label: 'España',
+                    data: gdpSpain,
+                    borderColor: '#ff6b6b',
+                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                },
+                {
+                    label: 'UE-27',
+                    data: gdpEU,
+                    borderColor: '#4dabf7',
+                    backgroundColor: 'rgba(77, 171, 247, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                },
+                {
+                    label: 'Estados Unidos',
+                    data: gdpUSA,
+                    borderColor: '#82ca9d',
+                    backgroundColor: 'rgba(130, 202, 157, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                }
+            ]
+        },
+        options: {
+            ...commonOptions,
             plugins: {
-                legend: {
-                    display: false  // Usaremos nuestra leyenda personalizada
+                ...commonOptions.plugins,
+                title: {
+                    display: true,
+                    text: 'PIB per Cápita Real (2008 = 100)',
+                    color: '#e0e0e0',
+                    font: {
+                        size: 15,
+                        weight: '600'
+                    },
+                    padding: 15
                 },
                 tooltip: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                    titleColor: '#fff',
-                    bodyColor: '#fff',
-                    borderColor: '#555',
-                    borderWidth: 1,
-                    padding: 12,
-                    displayColors: true,
-                    titleFont: {
-                        size: 14
-                    },
-                    bodyFont: {
-                        size: 13
+                    ...commonOptions.plugins.tooltip,
+                    callbacks: {
+                        label: function(context) {
+                            const growth = (context.parsed.y - 100).toFixed(1);
+                            const sign = growth >= 0 ? '+' : '';
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} (${sign}${growth}%)`;
+                        }
                     }
                 }
             },
             scales: {
-                x: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)',
-                        borderColor: 'rgba(255, 255, 255, 0.2)'
-                    },
-                    ticks: {
-                        color: '#a0a0a0',
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
+                ...commonOptions.scales,
                 y: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)',
-                        borderColor: 'rgba(255, 255, 255, 0.2)'
-                    },
-                    ticks: {
+                    ...commonOptions.scales.y,
+                    min: 85,
+                    max: 130,
+                    title: {
+                        display: true,
+                        text: 'Índice (2008 = 100)',
                         color: '#a0a0a0',
                         font: {
                             size: 12
@@ -530,197 +736,93 @@
                     }
                 }
             }
-        };
+        }
+    });
 
-        // Gráfico de PIB per cápita
-        const ctxGDP = document.getElementById('gdpChart').getContext('2d');
-        const gdpChart = new Chart(ctxGDP, {
-            type: 'line',
-            data: {
-                labels: años,
-                datasets: [
-                    {
-                        label: 'España',
-                        data: gdpSpain,
-                        borderColor: '#ff6b6b',
-                        backgroundColor: 'rgba(255, 107, 107, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
+    // Gráfico Deuda/PIB
+    const ctxDebt = document.getElementById('debtChart').getContext('2d');
+    const debtChart = new Chart(ctxDebt, {
+        type: 'line',
+        data: {
+            labels: años,
+            datasets: [
+                {
+                    label: 'España',
+                    data: debtSpain,
+                    borderColor: '#ff6b6b',
+                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                },
+                {
+                    label: 'UE-27',
+                    data: debtEU,
+                    borderColor: '#4dabf7',
+                    backgroundColor: 'rgba(77, 171, 247, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                },
+                {
+                    label: 'Estados Unidos',
+                    data: debtUSA,
+                    borderColor: '#82ca9d',
+                    backgroundColor: 'rgba(130, 202, 157, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5
+                }
+            ]
+        },
+        options: {
+            ...commonOptions,
+            plugins: {
+                ...commonOptions.plugins,
+                title: {
+                    display: true,
+                    text: 'Deuda Pública / PIB (%)',
+                    color: '#e0e0e0',
+                    font: {
+                        size: 15,
+                        weight: '600'
                     },
-                    {
-                        label: 'UE-27',
-                        data: gdpEU,
-                        borderColor: '#4dabf7',
-                        backgroundColor: 'rgba(77, 171, 247, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    },
-                    {
-                        label: 'Estados Unidos',
-                        data: gdpUSA,
-                        borderColor: '#82ca9d',
-                        backgroundColor: 'rgba(130, 202, 157, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    }
-                ]
-            },
-            options: {
-                ...commonOptions,
-                plugins: {
-                    ...commonOptions.plugins,
-                    title: {
-                        display: true,
-                        text: 'PIB per Cápita Real (2008 = 100)',
-                        color: '#e0e0e0',
-                        font: {
-                            size: 16,
-                            weight: 'bold'
-                        },
-                        padding: 20
-                    },
-                    tooltip: {
-                        ...commonOptions.plugins.tooltip,
-                        callbacks: {
-                            label: function(context) {
-                                const growth = (context.parsed.y - 100).toFixed(1);
-                                const sign = growth >= 0 ? '+' : '';
-                                return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} (${sign}${growth}%)`;
-                            }
+                    padding: 15
+                },
+                tooltip: {
+                    ...commonOptions.plugins.tooltip,
+                    callbacks: {
+                        label: function(context) {
+                            const change = (context.parsed.y - context.dataset.data[0]).toFixed(1);
+                            const sign = change >= 0 ? '+' : '';
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}% (${sign}${change} p.p. desde 2008)`;
                         }
                     }
-                },
-                scales: {
-                    ...commonOptions.scales,
-                    y: {
-                        ...commonOptions.scales.y,
-                        min: 85,
-                        max: 130,
-                        title: {
-                            display: true,
-                            text: 'Índice (2008 = 100)',
-                            color: '#a0a0a0',
-                            font: {
-                                size: 13
-                            }
+                }
+            },
+            scales: {
+                ...commonOptions.scales,
+                y: {
+                    ...commonOptions.scales.y,
+                    min: 30,
+                    max: 130,
+                    title: {
+                        display: true,
+                        text: 'Deuda / PIB (%)',
+                        color: '#a0a0a0',
+                        font: {
+                            size: 12
                         }
                     }
                 }
             }
-        });
+        }
+    });
+</script>
+```
 
-        // Gráfico de Deuda/PIB
-        const ctxDebt = document.getElementById('debtChart').getContext('2d');
-        const debtChart = new Chart(ctxDebt, {
-            type: 'line',
-            data: {
-                labels: años,
-                datasets: [
-                    {
-                        label: 'España',
-                        data: debtSpain,
-                        borderColor: '#ff6b6b',
-                        backgroundColor: 'rgba(255, 107, 107, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    },
-                    {
-                        label: 'UE-27',
-                        data: debtEU,
-                        borderColor: '#4dabf7',
-                        backgroundColor: 'rgba(77, 171, 247, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    },
-                    {
-                        label: 'Estados Unidos',
-                        data: debtUSA,
-                        borderColor: '#82ca9d',
-                        backgroundColor: 'rgba(130, 202, 157, 0.1)',
-                        borderWidth: 3,
-                        tension: 0.2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6
-                    }
-                ]
-            },
-            options: {
-                ...commonOptions,
-                plugins: {
-                    ...commonOptions.plugins,
-                    title: {
-                        display: true,
-                        text: 'Deuda Pública / PIB (%)',
-                        color: '#e0e0e0',
-                        font: {
-                            size: 16,
-                            weight: 'bold'
-                        },
-                        padding: 20
-                    },
-                    tooltip: {
-                        ...commonOptions.plugins.tooltip,
-                        callbacks: {
-                            label: function(context) {
-                                const change = (context.parsed.y - context.dataset.data[0]).toFixed(1);
-                                const sign = change >= 0 ? '+' : '';
-                                return `${context.dataset.label}: ${context.parsed.y.toFixed(1)}% (${sign}${change} p.p. desde 2008)`;
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    ...commonOptions.scales,
-                    y: {
-                        ...commonOptions.scales.y,
-                        min: 30,
-                        max: 130,
-                        title: {
-                            display: true,
-                            text: 'Deuda / PIB (%)',
-                            color: '#a0a0a0',
-                            font: {
-                                size: 13
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-        // Animación inicial para las tarjetas
-        const cards = document.querySelectorAll('.country-card');
-        cards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                card.style.transition = 'all 0.5s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 150);
-        });
-
-        // Efecto hover en las tarjetas
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-5px)';
-                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.6)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 5px 20px rgba(0,0,0,0.4)';
-            });
-        });
-    </script>
 </body>
 </html>
