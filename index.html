@@ -9,19 +9,188 @@
     <meta name="keywords" content="economía España, crisis económica, deuda pública, PIB per cápita, análisis económico">
     <meta property="og:title" content="El Empobrecimiento de España: Datos que no puedes ignorar">
     <meta property="og:description" content="PIB estancado + Deuda triplicada = España en declive. Análisis con datos oficiales.">
-    <link rel="stylesheet" href="theme.css">
-    <style>
-        /* Estilos específicos para la página principal */
-        .hero {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            padding: 4rem 0;
-            text-align: center;
-            border-bottom: 1px solid var(--accent-light);
-            position: relative;
-            overflow: hidden;
-        }
 
 ```
+<!-- AI SEO: Meta tags de citación -->
+<meta name="citation_title" content="El Empobrecimiento de España: Análisis Económico 2008-2024">
+<meta name="citation_author" content="Análisis Económico Independiente">
+<meta name="citation_publication_date" content="2025/07/01">
+<meta name="citation_data_source" content="INE, Banco de España, Eurostat, FRED">
+<meta name="citation_online_date" content="2025/07/01">
+<meta name="citation_language" content="es">
+
+<!-- Structured Data para LLMs -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AnalysisNewsArticle",
+  "headline": "El Empobrecimiento de España: Análisis Económico 2008-2024",
+  "description": "Análisis exhaustivo del estancamiento económico español. PIB per cápita real +3.2% vs Deuda +211% desde 2008.",
+  "author": {
+    "@type": "Organization",
+    "name": "Análisis Económico Independiente"
+  },
+  "datePublished": "2025-07-01",
+  "dateModified": "2025-07-01",
+  "mainEntity": {
+    "@type": "StatisticalPublication",
+    "name": "Análisis PIB per cápita y Deuda España 2008-2024",
+    "about": {
+      "@type": "Country",
+      "name": "España"
+    },
+    "temporalCoverage": "2008/2024",
+    "spatialCoverage": {
+      "@type": "Country",
+      "name": "España"
+    },
+    "sourceOrganization": [
+      {
+        "@type": "GovernmentOrganization",
+        "name": "Instituto Nacional de Estadística (INE)",
+        "url": "https://www.ine.es"
+      },
+      {
+        "@type": "GovernmentOrganization",
+        "name": "Banco de España",
+        "url": "https://www.bde.es"
+      },
+      {
+        "@type": "GovernmentOrganization",
+        "name": "Eurostat",
+        "url": "https://ec.europa.eu/eurostat"
+      }
+    ]
+  },
+  "keywords": ["economía España", "PIB per cápita", "deuda pública", "crisis económica", "análisis económico", "empobrecimiento"],
+  "articleSection": "Economía",
+  "inLanguage": "es",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Análisis Económico Independiente"
+  }
+}
+</script>
+
+<style>
+    /* Reset y variables CSS CORREGIDAS */
+    :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --text-primary: #212121;
+        --text-secondary: #666666;
+        --accent-primary: #1e3a5f;
+        --accent-secondary: #4dabf7;
+        --brand-orange: #ff6a00;
+        --brand-red: #ff6b6b;
+        --warning-yellow: #feca57;
+        --success-green: #82ca9d;
+        --border-color: #e0e0e0;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+        --shadow-medium: rgba(0, 0, 0, 0.2);
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Modo oscuro */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --border-color: #333333;
+            --shadow-light: rgba(0, 0, 0, 0.5);
+            --shadow-medium: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    /* Reset global CORREGIDO */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.6;
+    }
+    
+    /* Navegación mejorada con logo */
+    .nav-bar {
+        background: linear-gradient(180deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.85) 100%);
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px var(--shadow-light);
+    }
+    
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-brand-image-container {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+    .nav-brand-image {
+        height: 44px;
+        width: auto;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+    }
+    
+    .nav-link {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-size: 0.95em;
+        font-weight: 500;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+    }
+    
+    .nav-link.active {
+        background: var(--brand-orange);
+        color: #ffffff;
+        font-weight: 600;
+    }
+    
+    /* Hero section mejorada */
+    .hero {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        padding: 80px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+    }
+    
     .hero::before {
         content: '';
         position: absolute;
@@ -29,85 +198,133 @@
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(255,107,107,0.05) 0%, transparent 70%);
         animation: pulse 15s ease-in-out infinite;
     }
     
     @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 0.3; }
-        50% { transform: scale(1.1); opacity: 0.6; }
+        0%, 100% { transform: scale(1); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 0.8; }
     }
     
     .hero h1 {
-        font-size: 3.5rem;
-        color: var(--accent-primary);
-        margin-bottom: 1rem;
+        font-size: 3.5em;
+        color: var(--brand-red);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        line-height: 1.2;
         position: relative;
         z-index: 1;
-        font-weight: 700;
     }
     
     .hero-subtitle {
-        font-size: 1.5rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
+        font-size: 1.5em;
+        color: var(--warning-yellow);
+        margin-bottom: 35px;
         font-style: italic;
         position: relative;
         z-index: 1;
     }
     
+    .sources {
+        display: block;
+        margin-top: 25px;
+        font-size: .75rem;
+        color: var(--text-secondary);
+        line-height: 1.4;
+    }
+    
+    /* Key stats mejorados */
     .key-stats {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 20px;
         position: relative;
         z-index: 1;
     }
     
     .key-stat {
-        background: var(--bg-card);
-        padding: 1.5rem 2rem;
-        border-radius: var(--radius-lg);
-        border: 2px solid var(--accent-light);
-        transition: var(--transition-slow);
-        min-width: 200px;
+        display: inline-block;
+        margin: 10px;
+        padding: 20px 30px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 35px;
+        border: 2px solid;
+        border-color: var(--brand-red);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .key-stat {
+            background: rgba(255, 255, 255, 0.05);
+        }
     }
     
     .key-stat:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--accent-primary);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
     }
     
     .key-stat-value {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--accent-primary);
-        margin-bottom: 0.5rem;
+        font-size: 2.2em;
+        font-weight: bold;
+        color: var(--brand-red);
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
     }
     
     .key-stat-label {
-        color: var(--text-muted);
-        font-size: 0.9rem;
+        font-size: 1em;
+        color: var(--text-secondary);
+        margin-top: 5px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
     }
     
+    /* Container principal */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+        flex: 1;
+    }
+    
+    .intro-text {
+        text-align: center;
+        margin-bottom: 60px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .intro-text p {
+        font-size: 1.25em;
+        line-height: 1.8;
+        color: var(--text-primary);
+        margin-bottom: 25px;
+    }
+    
+    .intro-text strong {
+        color: var(--brand-red);
+        font-weight: 600;
+    }
+    
+    /* Grid de análisis mejorado */
     .analysis-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
+        gap: 40px;
+        margin-bottom: 60px;
     }
     
     .analysis-card {
-        background: var(--bg-card);
-        border-radius: var(--radius-lg);
+        background: var(--bg-secondary);
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: var(--shadow-md);
-        transition: var(--transition-slow);
-        border: 2px solid var(--accent-light);
+        box-shadow: 0 10px 40px var(--shadow-medium);
+        transition: all 0.4s ease;
+        border: 2px solid transparent;
         position: relative;
     }
     
@@ -118,7 +335,7 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(90deg, var(--accent-color), var(--accent-color-2));
         opacity: 0;
         transition: opacity 0.3s ease;
     }
@@ -128,9 +345,32 @@
     }
     
     .analysis-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--accent-primary);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px var(--shadow-medium);
+    }
+    
+    .analysis-card.primary {
+        border-color: var(--brand-red);
+        --accent-color: var(--brand-red);
+        --accent-color-2: #ff8787;
+    }
+    
+    .analysis-card.secondary {
+        border-color: var(--accent-secondary);
+        --accent-color: var(--accent-secondary);
+        --accent-color-2: #6db8f9;
+    }
+    
+    .card-header {
+        padding: 35px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .card-header {
+            background: rgba(255, 255, 255, 0.03);
+        }
     }
     
     .card-number {
@@ -139,31 +379,60 @@
         height: 45px;
         line-height: 45px;
         text-align: center;
-        background: var(--accent-primary);
-        color: white;
+        background: linear-gradient(45deg, var(--brand-red), #ff8787);
+        color: #fff;
         border-radius: 50%;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+        font-size: 1.2em;
+    }
+    
+    .analysis-card.secondary .card-number {
+        background: linear-gradient(45deg, var(--accent-secondary), #6db8f9);
+        box-shadow: 0 4px 10px rgba(77, 171, 247, 0.3);
+    }
+    
+    .card-title {
+        font-size: 1.9em;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        font-weight: bold;
+    }
+    
+    .card-subtitle {
+        color: var(--text-secondary);
+        font-size: 1.15em;
+    }
+    
+    .card-content {
+        padding: 35px;
+    }
+    
+    .card-content p {
+        line-height: 1.8;
+        color: var(--text-primary);
+        margin-bottom: 25px;
+        font-size: 1.05em;
     }
     
     .highlights {
         list-style: none;
-        margin: 1.5rem 0;
+        margin: 25px 0;
     }
     
     .highlights li {
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--accent-light);
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-color);
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        transition: var(--transition);
+        gap: 12px;
+        transition: all 0.3s ease;
     }
     
     .highlights li:hover {
-        padding-left: 0.5rem;
-        background: var(--accent-light);
+        padding-left: 10px;
+        background: rgba(255, 255, 255, 0.02);
     }
     
     .highlights li:last-child {
@@ -171,16 +440,47 @@
     }
     
     .highlight-icon {
-        font-size: 1.5rem;
+        font-size: 1.6em;
     }
     
-    .quote-section {
-        background: var(--bg-card);
-        padding: 3rem;
-        border-radius: var(--radius-lg);
+    .view-button {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 18px 45px;
+        background: linear-gradient(45deg, var(--brand-red), #ff8787);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 1.15em;
+        transition: all 0.3s ease;
         text-align: center;
-        margin: 3rem 0;
-        border: 2px solid var(--accent-light);
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    }
+    
+    .analysis-card.secondary .view-button {
+        background: linear-gradient(45deg, var(--accent-secondary), #6db8f9);
+        box-shadow: 0 5px 15px rgba(77, 171, 247, 0.3);
+    }
+    
+    .view-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+    }
+    
+    .analysis-card.secondary .view-button:hover {
+        box-shadow: 0 10px 30px rgba(77, 171, 247, 0.5);
+    }
+    
+    /* Quote section mejorada */
+    .quote-section {
+        background: var(--bg-secondary);
+        padding: 45px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 60px 0;
+        border: 2px solid var(--warning-yellow);
         position: relative;
         overflow: hidden;
     }
@@ -191,101 +491,148 @@
         top: -20px;
         left: 20px;
         font-size: 120px;
-        color: var(--accent-light);
+        color: rgba(254, 202, 87, 0.1);
         font-family: Georgia, serif;
     }
     
     .quote {
-        font-size: 1.6rem;
+        font-size: 1.6em;
         font-style: italic;
-        color: var(--accent-primary);
-        margin-bottom: 1rem;
+        color: var(--warning-yellow);
+        margin-bottom: 20px;
         line-height: 1.6;
         position: relative;
         z-index: 1;
     }
     
     .quote-author {
-        color: var(--text-muted);
-        font-size: 1.1rem;
+        color: var(--text-secondary);
+        font-size: 1.15em;
     }
     
+    /* Warning banner mejorado */
     .warning-banner {
-        background: rgba(220, 53, 69, 0.1);
-        border: 2px solid var(--danger);
-        padding: 1.5rem;
-        border-radius: var(--radius);
-        margin: 2rem 0;
+        background: rgba(255, 107, 107, 0.15);
+        border: 2px solid rgba(255, 107, 107, 0.4);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 40px 0;
         text-align: center;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 5px 20px rgba(255, 107, 107, 0.2);
     }
     
     .warning-banner p {
-        color: var(--danger);
-        font-weight: 600;
-        font-size: 1.2rem;
+        color: var(--brand-red);
+        font-weight: bold;
+        font-size: 1.2em;
         margin: 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
-    
-    .footer {
+
+    /* FAQ Section */
+    .faq-section {
         background: var(--bg-secondary);
-        border-top: 1px solid var(--accent-light);
-        padding: 3rem 0;
-        margin-top: 4rem;
+        padding: 45px;
+        border-radius: 20px;
+        margin: 60px 0;
+        border: 2px solid rgba(77, 171, 247, 0.3);
+    }
+
+    .faq-section h2 {
+        color: var(--accent-secondary);
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2em;
+    }
+
+    .faq-item {
+        margin-bottom: 35px;
+        padding-bottom: 35px;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .faq-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+
+    .faq-item h3 {
+        color: var(--warning-yellow);
+        font-size: 1.4em;
+        margin-bottom: 15px;
+    }
+
+    .faq-item p {
+        color: var(--text-primary);
+        line-height: 1.8;
+        font-size: 1.05em;
+    }
+
+    .faq-item strong {
+        color: var(--brand-red);
     }
     
-    .source-note {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-    }
-    
-    .share-section {
+    /* Footer mejorado */
+    .footer {
+        background: var(--accent-primary);
+        border-top: 1px solid var(--border-color);
+        padding: 50px 20px;
         text-align: center;
     }
     
+    .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .source-note {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95em;
+        margin-bottom: 25px;
+        line-height: 1.7;
+    }
+    
+    .share-section {
+        margin-top: 35px;
+    }
+    
     .share-title {
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-        font-size: 1.1rem;
-        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 20px;
+        font-size: 1.15em;
+        font-weight: 500;
     }
     
     .share-buttons {
         display: flex;
-        gap: 1rem;
+        gap: 15px;
         justify-content: center;
         flex-wrap: wrap;
     }
     
     .share-button {
-        padding: 0.75rem 1.5rem;
-        background: var(--bg-card);
-        color: var(--text-primary);
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
         text-decoration: none;
-        border-radius: var(--radius);
-        transition: var(--transition);
+        border-radius: 25px;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        border: 1px solid var(--accent-light);
+        gap: 10px;
+        font-size: 1em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .share-button:hover {
-        background: var(--accent-light);
+        background: rgba(255, 255, 255, 0.2);
         transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
     }
     
-    .sources {
-        display: block;
-        margin-top: 1.5rem;
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        line-height: 1.4;
-    }
-    
-    /* Responsive */
+    /* Media queries mejoradas */
     @media (max-width: 900px) {
         .analysis-grid {
             grid-template-columns: 1fr;
@@ -293,12 +640,22 @@
     }
     
     @media (max-width: 768px) {
+        .nav-container {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .nav-links {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.5em;
         }
         
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.2em;
         }
         
         .key-stats {
@@ -312,25 +669,41 @@
         }
         
         .quote {
-            font-size: 1.3rem;
+            font-size: 1.3em;
         }
     }
     
     @media (max-width: 600px) {
         .hero {
-            padding: 3rem 0;
+            padding: 60px 20px;
         }
         
         .hero h1 {
-            font-size: 2rem;
+            font-size: 2em;
         }
         
         .key-stat-value {
-            font-size: 2rem;
+            font-size: 1.8em;
+        }
+        
+        .analysis-grid {
+            gap: 30px;
+        }
+        
+        .card-header {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.6em;
         }
         
         .quote-section {
-            padding: 2rem 1rem;
+            padding: 30px 20px;
+        }
+
+        .nav-brand-image {
+            height: 36px;
         }
     }
 </style>
@@ -338,67 +711,55 @@
 
 </head>
 <body>
-    <nav class="nav-bar">
-        <div class="nav-container container">
-            <!-- Opción 1: Logo como texto estilizado (recomendado) -->
-            <a href="https://chusdiez.com" class="nav-brand">
-                <div class="nav-brand-main">CHUSDIEZ.COM</div>
-                <div class="nav-brand-tagline">Análisis Económico</div>
+    <header class="nav-bar">
+        <div class="nav-container">
+            <a href="https://chusdiez.com" class="nav-brand-image-container">
+                <img src="logo-chusdiez.png" alt="ChusDiez.com" class="nav-brand-image">
             </a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link active">Inicio</a>
+                <a href="espana.html" class="nav-link">Empobrecimiento</a>
+                <a href="divergencia.html" class="nav-link">Comparación</a>
+            </nav>
+        </div>
+    </header>
 
 ```
-        <!-- Opción 2: Si tienes archivo de imagen del logo -->
-        <!-- 
-        <a href="https://chusdiez.com" class="nav-brand-image-container">
-            <img src="./logo-chusdiez.svg" alt="ChusDiez.com" class="nav-brand-image">
-        </a>
-        -->
-        
-        <div class="nav-links">
-            <a href="./index.html" class="nav-link active">Inicio</a>
-            <a href="./espana.html" class="nav-link">Empobrecimiento</a>
-            <a href="./divergencia.html" class="nav-link">Comparación Internacional</a>
-        </div>
-    </div>
-</nav>
-
 <div class="hero">
-    <div class="container">
-        <h1>El Empobrecimiento de España</h1>
-        <p class="hero-subtitle">Análisis económico basado en datos oficiales (2008-2024)</p>
-        
-        <div class="key-stats">
-            <div class="key-stat">
-                <div class="key-stat-value">+3.2%</div>
-                <div class="key-stat-label">PIB per cápita real</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">+211%</div>
-                <div class="key-stat-label">Deuda per cápita</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">840€</div>
-                <div class="key-stat-label">Intereses por español/año</div>
-            </div>
+    <h1>El Empobrecimiento de España</h1>
+    <p class="hero-subtitle">Análisis económico basado en datos oficiales (2008-2024)</p>
+    
+    <div class="key-stats">
+        <div class="key-stat">
+            <div class="key-stat-value">+3.2%</div>
+            <div class="key-stat-label">PIB per cápita real</div>
+        </div>
+        <div class="key-stat">
+            <div class="key-stat-value">+211%</div>
+            <div class="key-stat-label">Deuda per cápita</div>
+        </div>
+        <div class="key-stat">
+            <div class="key-stat-value">840€</div>
+            <div class="key-stat-label">Intereses por español/año</div>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <div class="text-center mb-3">
-        <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 1.5rem;">
+    <div class="intro-text">
+        <p>
             España vive una ilusión de prosperidad. Mientras el crecimiento nominal del PIB crece y los políticos celebran la "recuperación", 
             los datos revelan otra realidad menos evidente: <strong>nos estamos empobreciendo en tiempo real</strong> el poder adquisitivo apenas ha mejorado
             y la deuda se ha disparado.
         </p>
-        <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto;">
+        <p>
             Este análisis, basado exclusivamente en datos oficiales del INE, Banco de España y Eurostat, 
             demuestra cómo España se ha estancado mientras acumula una deuda insostenible que compromete el futuro de generaciones.
         </p>
     </div>
     
     <div class="analysis-grid">
-        <div class="analysis-card">
+        <div class="analysis-card primary">
             <div class="card-header">
                 <div class="card-number">1</div>
                 <h2 class="card-title">El Empobrecimiento Real</h2>
@@ -427,11 +788,11 @@
                         <span>Escenarios de deuda y crecimiento hasta 2030</span>
                     </li>
                 </ul>
-                <a href="./espana.html" class="btn btn-primary btn-block">Ver Análisis Completo</a>
+                <a href="espana.html" class="view-button">Ver Análisis Completo</a>
             </div>
         </div>
         
-        <div class="analysis-card">
+        <div class="analysis-card secondary">
             <div class="card-header">
                 <div class="card-number">2</div>
                 <h2 class="card-title">La Gran Divergencia</h2>
@@ -449,7 +810,7 @@
                     </li>
                     <li>
                         <span class="highlight-icon">📉</span>
-                        <span>Manteniendo esta brecha, tardaríamos varias décadas para alcanzar a USA</span>
+                        <span>Manteniendo esta brecha, tardaríamos 80 años para alcanzar a USA</span>
                     </li>
                     <li>
                         <span class="highlight-icon">🏗️</span>
@@ -460,7 +821,7 @@
                         <span>Propuestas de cambio estructural</span>
                     </li>
                 </ul>
-                <a href="./divergencia.html" class="btn btn-primary btn-block">Ver Comparación</a>
+                <a href="divergencia.html" class="view-button">Ver Comparación</a>
             </div>
         </div>
     </div>
@@ -474,12 +835,63 @@
     </div>
     
     <div class="warning-banner">
-        <p>Si la deuda supera de forma estable el 120% del PIB, los mercados suelen exigir ajustes drásticos; con la senda actual, alcanzaríamos ese nivel en 4-5 años.</p>
+        <p>Si la deuda supera de forma estable el 120 % del PIB, los mercados suelen exigir ajustes drásticos; con la senda actual, alcanzaríamos ese nivel en 4-5 años.</p>
     </div>
+    
+    <!-- FAQ Section para AI SEO -->
+    <section class="faq-section">
+        <h2>Preguntas Frecuentes</h2>
+        
+        <div class="faq-item">
+            <h3>¿Por qué España creció solo 3.2% en PIB per cápita real desde 2008?</h3>
+            <p>
+                España se ha estancado en un modelo económico basado en sectores de bajo valor añadido (turismo, construcción, servicios básicos). 
+                Mientras países como Estados Unidos apostaron por tecnología e innovación (+25.3% de crecimiento), España mantuvo estructuras 
+                productivas obsoletas. Además, el crecimiento ha sido extensivo (más población) no intensivo (más productividad por trabajador).
+            </p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>¿Cuánto paga cada español en intereses de deuda pública?</h3>
+            <p>
+                Según datos del Banco de España (enero 2025), España paga 40.320 millones de euros anuales en intereses. 
+                Con una población de 48 millones, esto equivale a <strong>840€ por español al año</strong>, 
+                incluyendo niños y jubilados. Una familia de 4 miembros paga indirectamente 3.360€ anuales solo en intereses de deuda.
+            </p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>¿Cómo se compara España con otros países europeos?</h3>
+            <p>
+                La divergencia es alarmante. Desde 2008: España creció +3.2%, la UE-27 +18.5%, y Estados Unidos +25.3% en PIB per cápita real. 
+                España ha perdido 15.3 puntos porcentuales respecto a la media europea. A este ritmo, necesitaríamos 80 años para alcanzar 
+                el nivel actual de Estados Unidos (asumiendo que ellos se detuvieran hoy).
+            </p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>¿Qué significa que la deuda per cápita aumentó un 211%?</h3>
+            <p>
+                En términos reales (euros constantes 2015), cada español debe hoy tres veces más que en 2008. 
+                Es como si una familia que debía 8.500€ en 2008, ahora debiera 26.000€, pero sus ingresos reales apenas hubieran aumentado 
+                un 3%. Esta deuda no desaparece: hay que pagarla con impuestos futuros o inflación.
+            </p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>¿Qué pasará si España alcanza el 120% de deuda/PIB?</h3>
+            <p>
+                Históricamente, cuando la deuda supera el 120% del PIB de forma sostenida, los mercados financieros exigen primas de riesgo más altas 
+                y reformas estructurales. Casos como Grecia (2010) o Italia muestran que esto lleva a: recortes drásticos del gasto público, 
+                subidas de impuestos, privatizaciones forzosas y pérdida de soberanía económica. Con la tendencia actual, 
+                España alcanzaría ese nivel crítico en 4-5 años.
+            </p>
+        </div>
+    </section>
 </div>
 
 <div class="footer">
-    <div class="container">
+    <div class="footer-content">
         <p class="source-note">
             Todos los datos provienen de fuentes oficiales: INE (Contabilidad Nacional Trimestral), 
             Banco de España (Boletín Estadístico), Eurostat (nama_10_pc), FRED (Federal Reserve Economic Data). 
@@ -490,8 +902,8 @@
             <p class="share-title">Comparte este análisis:</p>
             <div class="share-buttons">
                 <a href="https://x.com/intent/tweet?text=España%20se%20empobrece%3A%20PIB%20per%20cápita%20%2B3.2%25%20vs%20Deuda%20%2B211%25%20desde%202008.%20Análisis%20con%20datos%20oficiales%3A&url=" class="share-button" target="_blank">
-                    <span>🐦</span>
                     <span>X</span>
+                    <span>X.com</span>
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=" class="share-button" target="_blank">
                     <span>💼</span>
@@ -510,7 +922,7 @@
 </div>
 
 <script>
-    // Animación de entrada para las tarjetas
+    // Animación de entrada mejorada para las tarjetas
     document.addEventListener('DOMContentLoaded', function() {
         const cards = document.querySelectorAll('.analysis-card');
         const observerOptions = {
@@ -522,7 +934,13 @@
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.classList.add('animate-fade-in');
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.8s ease';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
                     }, index * 150);
                     observer.unobserve(entry.target);
                 }
