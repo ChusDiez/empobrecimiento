@@ -18,7 +18,8 @@
                 <img src="logo-chusdiez.png"
                      srcset="logo-chusdiez.png 1x, logo-chusdiez@2x.png 2x"
                      alt="ChusDiez.com – AI, Law & Human Purpose"
-                     class="nav-brand-image">
+                     class="nav-brand-image"
+                     onerror="this.style.display='none'; this.parentElement.textContent='ChusDiez.com'">
             </a>
             <div class="nav-links">
                 <a href="index.html" class="nav-link">Inicio</a>
@@ -113,10 +114,10 @@
         </div>
 
         <div class="charts-grid">
-            <div class="chart-container">
+            <div class="chart-container" style="position: relative; height: 400px;">
                 <canvas id="gdpChart" aria-label="Gráfico de PIB per cápita real 2008-2024: España vs UE vs USA"></canvas>
             </div>
-            <div class="chart-container">
+            <div class="chart-container" style="position: relative; height: 400px;">
                 <canvas id="debtChart" aria-label="Gráfico de deuda pública sobre PIB 2008-2024: España vs UE vs USA"></canvas>
             </div>
         </div>
@@ -215,10 +216,9 @@
         const debtEU = [60.2, 72.1, 77.9, 79.8, 82.4, 84.0, 84.6, 83.4, 82.0, 79.7, 77.8, 75.7, 87.8, 86.5, 82.6, 81.5, 81.7];
         const debtUSA = [64.8, 83.5, 93.8, 96.0, 99.0, 99.8, 101.2, 99.5, 105.8, 103.9, 104.3, 106.9, 126.4, 124.7, 119.9, 120.4, 123.0];
 
-        // Obtener colores del CSS
-        const cssVar = getComputedStyle(document.documentElement);
-        const brandOrange = cssVar.getPropertyValue('--brand-orange').trim();
-        const brandBlue = cssVar.getPropertyValue('--brand-blue').trim();
+        // Definir colores directamente para evitar problemas
+        const brandOrange = '#ff6a00';
+        const brandBlue = '#0a355f';
 
         // Configuración común para ambos gráficos
         const commonOptions = {
@@ -297,7 +297,7 @@
                         label: 'España',
                         data: gdpSpain,
                         borderColor: brandOrange,
-                        backgroundColor: `${brandOrange}20`,
+                        backgroundColor: 'rgba(255, 106, 0, 0.2)',
                         borderWidth: 3,
                         tension: 0.2,
                         pointRadius: 4,
@@ -307,7 +307,7 @@
                         label: 'UE-27',
                         data: gdpEU,
                         borderColor: brandBlue,
-                        backgroundColor: `${brandBlue}20`,
+                        backgroundColor: 'rgba(10, 53, 95, 0.2)',
                         borderWidth: 3,
                         tension: 0.2,
                         pointRadius: 4,
@@ -317,7 +317,7 @@
                         label: 'Estados Unidos',
                         data: gdpUSA,
                         borderColor: '#28a745',
-                        backgroundColor: '#28a74520',
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
                         borderWidth: 3,
                         tension: 0.2,
                         pointRadius: 4,
@@ -380,7 +380,7 @@
                         label: 'España',
                         data: debtSpain,
                         borderColor: brandOrange,
-                        backgroundColor: `${brandOrange}20`,
+                        backgroundColor: 'rgba(255, 106, 0, 0.2)',
                         borderWidth: 3,
                         tension: 0.2,
                         pointRadius: 4,
@@ -390,7 +390,7 @@
                         label: 'UE-27',
                         data: debtEU,
                         borderColor: brandBlue,
-                        backgroundColor: `${brandBlue}20`,
+                        backgroundColor: 'rgba(10, 53, 95, 0.2)',
                         borderWidth: 3,
                         tension: 0.2,
                         pointRadius: 4,
@@ -400,7 +400,7 @@
                         label: 'Estados Unidos',
                         data: debtUSA,
                         borderColor: '#28a745',
-                        backgroundColor: '#28a74520',
+                        backgroundColor: 'rgba(40, 167, 69, 0.2)',
                         borderWidth: 3,
                         tension: 0.2,
                         pointRadius: 4,
