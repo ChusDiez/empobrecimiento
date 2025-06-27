@@ -1,876 +1,482 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>España: La Realidad del Empobrecimiento</title>
-    <meta name="description" content="Análisis detallado del empobrecimiento real de España: PIB per cápita estancado (+3.2%) vs deuda triplicada (+211%) desde 2008.">
-    <meta name="keywords" content="España economía, PIB per cápita real, deuda pública España, crisis económica, empobrecimiento">
-
-
-<!-- AI SEO: Meta tags de citación -->
-<meta name="citation_title" content="España: La Realidad del Empobrecimiento">
-<meta name="citation_author" content="Análisis Económico Independiente">
-<meta name="citation_publication_date" content="2025/07/01">
-<meta name="citation_data_source" content="INE, Banco de España, Idealista, EPA">
-<meta name="citation_online_date" content="2025/07/01">
-<meta name="citation_language" content="es">
-
-<!-- Structured Data para LLMs -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AnalysisNewsArticle",
-  "headline": "España: La Realidad del Empobrecimiento",
-  "description": "Una familia que ganaba 30k€ y debía 8.5k€ (28%), ahora gana 31k€ y debe 26k€ (85%)",
-  "author": {
-    "@type": "Organization",
-    "name": "Análisis Económico Independiente"
-  },
-  "datePublished": "2025-07-01",
-  "dateModified": "2025-07-01",
-  "mainEntity": {
-    "@type": "EconomicIndicator",
-    "name": "Comparación PIB y Deuda per cápita España",
-    "temporalCoverage": "2008/2024",
-    "measurementTechnique": "Euros constantes 2015, volúmenes encadenados",
-    "value": [
-      {
-        "@type": "PropertyValue",
-        "name": "PIB per cápita real variación",
-        "value": "+3.2%",
-        "unitText": "porcentaje"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Deuda per cápita real variación",
-        "value": "+211%",
-        "unitText": "porcentaje"
-      }
-    ]
-  },
-  "keywords": ["empobrecimiento España", "PIB estancado", "deuda disparada", "coste vida España"],
-  "articleSection": "Economía Nacional",
-  "inLanguage": "es"
-}
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-<style>
-    /* Reset y variables CSS CORREGIDAS */
-    :root {
-        --bg-primary: #ffffff;
-        --bg-secondary: #f8f9fa;
-        --text-primary: #212121;
-        --text-secondary: #666666;
-        --accent-primary: #1e3a5f;
-        --accent-secondary: #4dabf7;
-        --brand-orange: #ff6a00;
-        --brand-red: #ff6b6b;
-        --warning-yellow: #feca57;
-        --success-green: #82ca9d;
-        --border-color: #e0e0e0;
-        --shadow-light: rgba(0, 0, 0, 0.1);
-        --shadow-medium: rgba(0, 0, 0, 0.2);
-        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    /* Modo oscuro */
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --border-color: #333333;
-            --shadow-light: rgba(0, 0, 0, 0.5);
-            --shadow-medium: rgba(0, 0, 0, 0.7);
-        }
-    }
-
-    /* Reset global CORREGIDO */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: var(--font-family);
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-        margin: 0;
-        padding: 20px;
-    }
-
-    /* Estilos de navegación con logo */
-    .nav-bar {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(37, 99, 235, 0.90) 50%, rgba(30, 64, 175, 0.85) 100%);
-        padding: 20px 0;
-        margin: -20px -20px 20px -20px;
-        border-bottom: 1px solid var(--border-color);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px var(--shadow-light);
-    }
-    
-    .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .nav-brand-image-container {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-    }
-    
-    .nav-brand-image {
-        height: 88px;
-        width: auto;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-    
-    .nav-links {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
-    
-    .nav-link {
-        color: #ffffff;
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-        font-size: 0.95em;
-        font-weight: 500;
-    }
-    
-    .nav-link:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-1px);
-    }
-    
-    .nav-link.active {
-        background: var(--brand-red);
-        color: #fff;
-        font-weight: 600;
-    }
-
-    @media (max-width: 768px) {
-        .nav-container {
-            flex-direction: column;
-            gap: 15px;
-        }
-        .nav-links {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding-top: 20px;
-    }
-
-    h1 {
-        text-align: center;
-        color: var(--brand-red);
-        font-size: 2.8em;
-        margin-bottom: 15px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        background: linear-gradient(90deg, rgba(255,107,107,0.1), rgba(255,107,107,0.3), rgba(255,107,107,0.1));
-        padding: 10px 20px;
-        border-radius: 10px;
-        display: inline-block;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .subtitle {
-        text-align: left;
-        color: var(--warning-yellow);
-        font-size: 1.4em;
-        margin-bottom: 25px;
-        font-style: italic;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .context-note {
-        text-align: center;
-        color: var(--text-secondary);
-        font-size: 1.1em;
-        margin-bottom: 40px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.6;
-    }
-
-    .chart-container {
-        position: relative;
-        height: 500px;
-        background: var(--bg-secondary);
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px var(--shadow-medium);
-        margin-bottom: 40px;
-    }
-
-    .metrics {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        margin-bottom: 40px;
-    }
-
-    .metric-card {
-        background: var(--bg-secondary);
-        padding: 25px;
-        border-radius: 12px;
-        text-align: center;
-        box-shadow: 0 5px 15px var(--shadow-light);
-        border: 2px solid;
-        transition: all 0.3s ease;
-    }
-
-    .metric-card.negative {
-        border-color: var(--brand-red);
-    }
-
-    .metric-card.warning {
-        border-color: var(--warning-yellow);
-    }
-
-    .metric-value {
-        font-size: 2.8em;
-        font-weight: bold;
-        margin: 12px 0;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
-
-    .metric-label {
-        color: var(--text-secondary);
-        font-size: 1em;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-    }
-
-    .metric-note {
-        font-size: 0.8em;
-        color: var(--text-secondary);
-        margin-top: 8px;
-    }
-
-    /* Estilos para la infografía comparativa */
-    .cost-comparison {
-        background: var(--bg-secondary);
-        padding: 25px;
-        border-radius: 15px;
-        margin: 40px 0;
-        box-shadow: 0 10px 30px var(--shadow-medium);
-    }
-
-    .cost-comparison h2 {
-        text-align: center;
-        color: var(--warning-yellow);
-        margin-bottom: 30px;
-        font-size: 1.8em;
-    }
-
-    .comparison-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        margin-bottom: 25px;
-    }
-
-    .year-column {
-        text-align: center;
-    }
-
-    .year-header {
-        font-size: 2em;
-        font-weight: bold;
-        margin-bottom: 20px;
-        padding: 10px;
-        border-radius: 10px;
-    }
-
-    .year-2008 {
-        background: #2e7d32;
-        color: #fff;
-    }
-
-    .year-2024 {
-        background: #d32f2f;
-        color: #fff;
-    }
-
-    .cost-item {
-        background: var(--bg-primary);
-        padding: 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        position: relative;
-    }
-
-    .cost-icon {
-        font-size: 3em;
-        margin-bottom: 10px;
-    }
-
-    .cost-label {
-        font-size: 1.1em;
-        color: var(--text-secondary);
-        margin-bottom: 10px;
-    }
-
-    .cost-value {
-        font-size: 2em;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .cost-change {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: linear-gradient(45deg, var(--brand-red), #ff8787);
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 1em;
-        font-weight: bold;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-
-    .real-impact {
-        text-align: center;
-        background: var(--bg-primary);
-        padding: 20px;
-        border-radius: 10px;
-        border: 2px solid var(--brand-red);
-    }
-
-    .real-impact-value {
-        font-size: 2.5em;
-        color: var(--brand-red);
-        font-weight: bold;
-        margin: 10px 0;
-    }
-
-    .technical-note {
-        font-size: 0.9em;
-        color: var(--text-secondary);
-        text-align: left;
-        margin-top: 25px;
-        font-style: italic;
-        line-height: 1.6;
-    }
-
-    .explanation {
-        background: var(--bg-secondary);
-        padding: 30px;
-        border-radius: 12px;
-        margin-top: 40px;
-        border: 2px solid;
-        border-color: var(--warning-yellow);
-    }
-
-    .explanation h2 {
-        color: var(--warning-yellow);
-        margin-top: 0;
-    }
-
-    .explanation p {
-        line-height: 1.8;
-        color: var(--text-primary);
-        margin: 15px 0;
-    }
-
-    .highlight {
-        color: var(--brand-red);
-        font-weight: bold;
-    }
-
-    .warning-text {
-        color: var(--warning-yellow);
-        font-weight: bold;
-    }
-
-    /* Media queries para móviles */
-    @media (max-width: 768px) {
-        .chart-container {
-            height: 400px;
-            padding: 15px;
-        }
-        .comparison-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        .year-column {
-            margin-bottom: 20px;
-        }
-        .year-header {
-            font-size: 1.8em;
-        }
-        .cost-item {
-            padding: 15px;
-        }
-        .cost-value {
-            font-size: 1.8em;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .metric-label {
-            font-size: 0.95em;
-        }
-        .metric-note {
-            font-size: 0.75em;
-        }
-        .technical-note {
-            font-size: 0.85em;
-        }
-        .subtitle {
-            font-size: 1.2em;
-        }
-        .context-note {
-            font-size: 1em;
-        }
-        h1 {
-            font-size: 2.2em;
-        }
-        .nav-brand-image {
-            height: 72px;
-        }
-    }
-
-    /* Estilos para el enlace de navegación */
-    .next-analysis {
-        background: var(--bg-secondary);
-        padding: 40px;
-        border-radius: 15px;
-        margin: 40px auto;
-        max-width: 800px;
-        text-align: center;
-        box-shadow: 0 10px 30px var(--shadow-medium);
-    }
-
-    .next-analysis h3 {
-        color: var(--accent-secondary);
-        margin-bottom: 15px;
-        font-size: 1.5em;
-    }
-
-    .next-analysis p {
-        color: var(--text-primary);
-        margin-bottom: 25px;
-        line-height: 1.6;
-    }
-
-    .next-analysis a {
-        display: inline-block;
-        padding: 15px 40px;
-        background: var(--accent-secondary);
-        color: #fff;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: bold;
-        font-size: 1.1em;
-        transition: all 0.3s ease;
-    }
-
-    .next-analysis a:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 30px rgba(77,171,247,0.4);
-    }
-</style>
-
-
+    <meta name="description" content="Análisis detallado del estancamiento económico español. PIB per cápita real estancado +3.2% vs deuda per cápita +211% desde 2008.">
+    <link rel="stylesheet" href="theme.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
-    <header class="nav-bar">
+    <nav class="nav-bar">
         <div class="nav-container">
             <a href="https://chusdiez.com" class="nav-brand-image-container">
-                <img src="logo-chusdiez.png" alt="ChusDiez.com" class="nav-brand-image">
+                <img src="logo-chusdiez.png"
+                     srcset="logo-chusdiez.png 1x, logo-chusdiez@2x.png 2x"
+                     alt="ChusDiez.com – AI, Law & Human Purpose"
+                     class="nav-brand-image">
             </a>
-            <nav class="nav-links">
+            <div class="nav-links">
                 <a href="index.html" class="nav-link">Inicio</a>
-                <a href="espana.html" class="nav-link active">Empobrecimiento</a>
-                <a href="divergencia.html" class="nav-link">Comparación</a>
-            </nav>
+                <a href="espana.html" class="nav-link" aria-current="page">Empobrecimiento</a>
+                <a href="divergencia.html" class="nav-link">Comparación Internacional</a>
+            </div>
         </div>
+    </nav>
+
+    <header class="hero">
+        <h1>España: La Realidad del Empobrecimiento</h1>
+        <p class="hero-subtitle">"Una familia que ganaba 30k€ y debía 8.5k€ (28%), ahora gana 31k€ y debe 26k€ (85%)"</p>
     </header>
 
-
-<div class="container">
-    <h1>España: La Realidad del Empobrecimiento</h1>
-    <p class="subtitle">"Una familia que ganaba 30k€ y debía 8.5k€ (28%), ahora gana 31k€ y debe 26k€ (85%)"</p>
-    
-    <p class="context-note">
-        Este análisis comienza en 2008, año de la crisis financiera global que marcó un punto de inflexión para España. 
-        Mientras el PIB nominal creció, el PIB per cápita real apenas se movió, y la deuda pública se triplicó, 
-        dejando a los españoles con menos riqueza real y más obligaciones.
-    </p>
-    
-    <div class="metrics">
-        <div class="metric-card negative">
-            <div class="metric-label">PIB per cápita real</div>
-            <div class="metric-value" style="color: var(--brand-red);">+3,2%</div>
-            <div class="metric-label">En 16 años (2008-2024)</div>
-            <div class="metric-note">(Euros constantes 2015)</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="metric-label">Deuda per cápita real</div>
-            <div class="metric-value" style="color: var(--warning-yellow);">+211%</div>
-            <div class="metric-label">Incremento desde 2008</div>
-            <div class="metric-note">(Euros constantes 2015)</div>
-        </div>
-        <div class="metric-card negative">
-            <div class="metric-label">Deuda/PIB</div>
-            <div class="metric-value" style="color: var(--brand-red);">101,8%</div>
-            <div class="metric-label">Era 35,5% en 2007</div>
-            <div class="metric-note">(Términos nominales)</div>
-        </div>
-        <div class="metric-card warning">
-            <div class="metric-label">Intereses anuales</div>
-            <div class="metric-value" style="color: var(--warning-yellow);">40.320M€</div>
-            <div class="metric-label">840€ por español al año</div>
-            <div class="metric-note">(BdE enero 2025)</div>
-        </div>
-    </div>
-
-    <div class="chart-container">
-        <canvas id="empobrecimientoChart" aria-label="Gráfico del PIB per cápita real y deuda per cápita real en España (2008-2024)"></canvas>
-    </div>
-
-    <!-- Nueva sección de comparación de costes -->
-    <div class="cost-comparison">
-        <h2>El Empobrecimiento en Tu Vida Diaria</h2>
-        <div class="comparison-grid">
-            <div class="year-column">
-                <div class="year-header year-2008">2008</div>
-                <div class="cost-item">
-                    <div class="cost-icon">🏠</div>
-                    <div class="cost-label">Alquiler 3 hab. Madrid</div>
-                    <div class="cost-value">1.100€</div>
-                </div>
-                <div class="cost-item">
-                    <div class="cost-icon">🛒</div>
-                    <div class="cost-label">Cesta de la compra</div>
-                    <div class="cost-value">150€</div>
-                </div>
-                <div class="cost-item">
-                    <div class="cost-icon">💰</div>
-                    <div class="cost-label">Salario medio neto</div>
-                    <div class="cost-value">1.755€</div>
-                </div>
+    <div class="container">
+        <section class="card">
+            <p class="text-center">
+                Este análisis comienza en 2008, año de la crisis financiera global que marcó un punto de inflexión para España. 
+                Mientras el PIB nominal creció, el PIB per cápita real apenas se movió, y la deuda pública se triplicó, 
+                dejando a los españoles con menos riqueza real y más obligaciones.
+            </p>
+        </section>
+        
+        <div class="metrics-grid">
+            <div class="card metric-card">
+                <div class="metric-label">PIB per cápita real</div>
+                <div class="metric-value">+3.2%</div>
+                <div class="metric-label">En 16 años (2008-2024)</div>
+                <small>(Euros constantes 2015)</small>
             </div>
-            <div class="year-column">
-                <div class="year-header year-2024">2024</div>
-                <div class="cost-item">
-                    <div class="cost-icon">🏠</div>
-                    <div class="cost-label">Alquiler 3 hab. Madrid</div>
-                    <div class="cost-value">1.950€</div>
-                    <div class="cost-change">+77%</div>
-                </div>
-                <div class="cost-item">
-                    <div class="cost-icon">🛒</div>
-                    <div class="cost-label">Cesta de la compra</div>
-                    <div class="cost-value">300€</div>
-                    <div class="cost-change">+100%</div>
-                </div>
-                <div class="cost-item">
-                    <div class="cost-icon">💰</div>
-                    <div class="cost-label">Salario medio neto</div>
-                    <div class="cost-value">2.129€</div>
-                    <div class="cost-change">+21%</div>
-                </div>
+            <div class="card metric-card">
+                <div class="metric-label">Deuda per cápita real</div>
+                <div class="metric-value">+211%</div>
+                <div class="metric-label">Incremento desde 2008</div>
+                <small>(Euros constantes 2015)</small>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-label">Deuda/PIB</div>
+                <div class="metric-value">101.8%</div>
+                <div class="metric-label">Era 35.5% en 2007</div>
+                <small>(Términos nominales)</small>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-label">Intereses anuales</div>
+                <div class="metric-value">40.320M€</div>
+                <div class="metric-label">840€ por español al año</div>
+                <small>(BdE enero 2025)</small>
             </div>
         </div>
-        <div class="real-impact">
-            <div class="metric-label">Capacidad de ahorro mensual</div>
-            <div class="real-impact-value">-121€</div>
-            <div class="metric-label">2008: +505€/mes → 2024: -121€/mes (déficit familiar)</div>
+
+        <div class="chart-container">
+            <canvas id="empobrecimientoChart" aria-label="Gráfico del PIB per cápita real y deuda per cápita real en España (2008-2024)"></canvas>
         </div>
-        <p class="technical-note">
-            * Fuentes: INE Contabilidad Nacional Trimestral (base 2015), INE Padrón Continuo (enero 2025), 
-            Banco de España Notificación EDP (dic-24) y Boletín Estadístico (ene-25), Eurostat nama_10_pc, 
-            Idealista (precio alquiler Madrid), INE IPC-Alimentación, INE EPA.
-        </p>
+
+        <!-- Comparación de costes de vida -->
+        <section class="card">
+            <h2 class="text-center">El Empobrecimiento en Tu Vida Diaria</h2>
+            <div class="comparison-grid">
+                <div class="year-column">
+                    <div class="year-header year-2008">2008</div>
+                    <div class="cost-item">
+                        <div class="cost-icon">🏠</div>
+                        <div class="cost-label">Alquiler 3 hab. Madrid</div>
+                        <div class="cost-value">1.100€</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">🛒</div>
+                        <div class="cost-label">Cesta de la compra</div>
+                        <div class="cost-value">150€</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">💰</div>
+                        <div class="cost-label">Salario medio neto</div>
+                        <div class="cost-value">1.755€</div>
+                    </div>
+                </div>
+                <div class="year-column">
+                    <div class="year-header year-2024">2024</div>
+                    <div class="cost-item">
+                        <div class="cost-icon">🏠</div>
+                        <div class="cost-label">Alquiler 3 hab. Madrid</div>
+                        <div class="cost-value">1.950€</div>
+                        <div class="cost-change">+77%</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">🛒</div>
+                        <div class="cost-label">Cesta de la compra</div>
+                        <div class="cost-value">300€</div>
+                        <div class="cost-change">+100%</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">💰</div>
+                        <div class="cost-label">Salario medio neto</div>
+                        <div class="cost-value">2.129€</div>
+                        <div class="cost-change">+21%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="real-impact">
+                <div class="metric-label">Capacidad de ahorro mensual</div>
+                <div class="real-impact-value">-121€</div>
+                <div class="metric-label">2008: +505€/mes → 2024: -121€/mes (déficit familiar)</div>
+            </div>
+            <p class="source-note">
+                * Fuentes: INE Contabilidad Nacional Trimestral (base 2015), INE Padrón Continuo (enero 2025), 
+                Banco de España Notificación EDP (dic-24) y Boletín Estadístico (ene-25), Eurostat nama_10_pc, 
+                Idealista (precio alquiler Madrid), INE IPC-Alimentación, INE EPA.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Lo que este gráfico revela:</h2>
+            <p>
+                El gráfico muestra dos realidades que se mueven en direcciones opuestas: mientras el <span class="highlight">PIB per cápita real (línea azul) ha crecido apenas un 3.2% desde 2008</span>, la <span class="warning-text">deuda per cápita real (línea roja) se ha disparado un 211%</span>.
+            </p>
+            <p>
+                En términos simples: <span class="highlight">no somos más ricos que en 2008, pero debemos tres veces más</span>. Es como si tu salario real hubiera subido apenas un 3% en 16 años, pero hubieras triplicado tu hipoteca.
+            </p>
+            <p>
+                La <span class="warning-text">zona sombreada</span> representa la brecha creciente entre nuestra riqueza real estancada y nuestra deuda galopante. Esta es la medida real de nuestro empobrecimiento: cada año que pasa, esta brecha se hace más grande.
+            </p>
+            <p>
+                Y lo más preocupante: <span class="highlight">el crecimiento ha sido extensivo (más población), no intensivo (más productividad)</span>. La inmigración ha aumentado el PIB total, pero no la riqueza individual. Mientras tanto, la deuda la pagaremos todos, nativos e inmigrantes: <span class="warning-text">840€ por persona al año solo en intereses</span>.
+            </p>
+        </section>
+        
+        <section class="card next-analysis">
+            <h3>¿Quieres ver cómo España se compara con Europa y USA?</h3>
+            <p>
+                Descubre la gran divergencia: mientras España se estancaba, otros países prosperaban. 
+                La brecha se amplía cada año que pasa.
+            </p>
+            <a href="divergencia.html" class="cta-button">Ver Comparación Internacional →</a>
+        </section>
     </div>
 
-    <div class="explanation">
-        <h2>Lo que este gráfico revela:</h2>
-        <p>
-            El gráfico muestra dos realidades que se mueven en direcciones opuestas: mientras el <span class="highlight">PIB per cápita real (línea azul) ha crecido apenas un 3,2% desde 2008</span>, la <span class="warning-text">deuda per cápita real (línea roja) se ha disparado un 211%</span>.
-        </p>
-        <p>
-            En términos simples: <span class="highlight">no somos más ricos que en 2008, pero debemos tres veces más</span>. Es como si tu salario real hubiera subido apenas un 3% en 16 años, pero hubieras triplicado tu hipoteca.
-        </p>
-        <p>
-            La <span class="warning-text">zona sombreada</span> representa la brecha creciente entre nuestra riqueza real estancada y nuestra deuda galopante. Esta es la medida real de nuestro empobrecimiento: cada año que pasa, esta brecha se hace más grande.
-        </p>
-        <p>
-            Y lo más preocupante: <span class="highlight">el crecimiento ha sido extensivo (más población), no intensivo (más productividad)</span>. La inmigración ha aumentado el PIB total, pero no la riqueza individual. Mientras tanto, la deuda la pagaremos todos, nativos e inmigrantes: <span class="warning-text">840€ por persona al año solo en intereses</span>.
-        </p>
-    </div>
-    
-    <div class="next-analysis">
-        <h3>¿Quieres ver cómo España se compara con Europa y USA?</h3>
-        <p>
-            Descubre la gran divergencia: mientras España se estancaba, otros países prosperaban. 
-            La brecha se amplía cada año que pasa.
-        </p>
-        <a href="divergencia.html">Ver Comparación Internacional →</a>
-    </div>
-</div>
-
-<script>
-    // Datos para el gráfico - CORREGIDOS
-    const años = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
-    
-    // PIB per cápita en índice (2008 = 100) - CORREGIDO para mostrar crecimiento mínimo
-    const pibPerCapitaReal = [100, 96.3, 95.8, 94.9, 92.1, 90.5, 91.8, 94.8, 97.5, 100.2, 102.3, 103.9, 92.8, 97.6, 102.8, 103.0, 103.2];
-    
-    // Deuda per cápita en índice (2008 = 100) - ajustado a +211% de incremento
-    const deudaPerCapita = [100, 128, 143, 167, 206, 235, 255, 260, 260, 257, 253, 248, 284, 282, 274, 272, 311];
-    
-    // Crear el gráfico con mejoras visuales
-    const ctx = document.getElementById('empobrecimientoChart').getContext('2d');
-    const chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: años,
-            datasets: [
-                {
-                    label: 'PIB per cápita real (2008=100, € constantes 2015)',
-                    data: pibPerCapitaReal,
-                    borderColor: '#4dabf7',
-                    backgroundColor: 'rgba(77, 171, 247, 0.2)',
-                    borderWidth: 4,
-                    tension: 0.3,
-                    pointRadius: 5,
-                    pointHoverRadius: 8,
-                    pointBackgroundColor: '#4dabf7',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2
-                },
-                {
-                    label: 'Deuda per cápita real (2008=100, € constantes 2015)',
-                    data: deudaPerCapita,
-                    borderColor: '#ff6b6b',
-                    backgroundColor: 'rgba(255, 107, 107, 0.2)',
-                    borderWidth: 4,
-                    tension: 0.3,
-                    pointRadius: 5,
-                    pointHoverRadius: 8,
-                    pointBackgroundColor: '#ff6b6b',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: {
-                duration: 1500,
-                easing: 'easeInOutQuad'
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index'
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'El Empobrecimiento Real de España: PIB Estancado vs Deuda Disparada (Euros Constantes 2015)',
-                    color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
-                    font: {
-                        size: 20,
-                        weight: 'bold'
+    <script>
+        // Datos para el gráfico - CORREGIDOS
+        const años = ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+        
+        // PIB per cápita en índice (2008 = 100)
+        const pibPerCapitaReal = [100, 96.3, 95.8, 94.9, 92.1, 90.5, 91.8, 94.8, 97.5, 100.2, 102.3, 103.9, 92.8, 97.6, 102.8, 103.0, 103.2];
+        
+        // Deuda per cápita en índice (2008 = 100)
+        const deudaPerCapita = [100, 128, 143, 167, 206, 235, 255, 260, 260, 257, 253, 248, 284, 282, 274, 272, 311];
+        
+        // Obtener colores del CSS
+        const cssVar = getComputedStyle(document.documentElement);
+        const brandBlue = cssVar.getPropertyValue('--brand-blue').trim();
+        const brandOrange = cssVar.getPropertyValue('--brand-orange').trim();
+        
+        // Crear el gráfico
+        const ctx = document.getElementById('empobrecimientoChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: años,
+                datasets: [
+                    {
+                        label: 'PIB per cápita real (2008=100, € constantes 2015)',
+                        data: pibPerCapitaReal,
+                        borderColor: brandBlue,
+                        backgroundColor: `${brandBlue}20`,
+                        borderWidth: 3,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: brandBlue,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2
                     },
-                    padding: 25
-                },
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
-                        font: {
-                            size: 15
-                        },
-                        padding: 20,
-                        usePointStyle: true,
-                        pointStyle: 'circle'
+                    {
+                        label: 'Deuda per cápita real (2008=100, € constantes 2015)',
+                        data: deudaPerCapita,
+                        borderColor: brandOrange,
+                        backgroundColor: `${brandOrange}20`,
+                        borderWidth: 3,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        pointBackgroundColor: brandOrange,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2
                     }
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(30, 30, 30, 0.9)',
-                    titleColor: '#fff',
-                    bodyColor: '#e0e0e0',
-                    borderColor: '#666',
-                    borderWidth: 1,
-                    padding: 15,
-                    displayColors: true,
-                    titleFont: {
-                        size: 14
-                    },
-                    bodyFont: {
-                        size: 13
-                    },
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            label += context.parsed.y.toFixed(1);
-                            
-                            // Añadir contexto adicional
-                            if (context.datasetIndex === 0) {
-                                const cambio = context.parsed.y - 100;
-                                label += ` (${cambio > 0 ? '+' : ''}${cambio.toFixed(1)}% vs 2008)`;
-                            } else {
-                                const multiplicador = (context.parsed.y / 100).toFixed(1);
-                                label += ` (×${multiplicador} vs 2008)`;
-                            }
-                            return label;
-                        }
-                    }
-                }
+                ]
             },
-            scales: {
-                x: {
-                    grid: {
-                        color: 'rgba(128, 128, 128, 0.15)',
-                        borderColor: 'rgba(128, 128, 128, 0.2)'
-                    },
-                    ticks: {
-                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
-                        font: {
-                            size: 13
-                        }
-                    }
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuad'
                 },
-                y: {
-                    beginAtZero: false,
-                    min: 80,
-                    max: 320,
-                    grid: {
-                        color: 'rgba(128, 128, 128, 0.15)',
-                        borderColor: 'rgba(128, 128, 128, 0.2)'
-                    },
-                    ticks: {
-                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
-                        font: {
-                            size: 13
-                        },
-                        callback: function(value) {
-                            return value;
-                        }
-                    },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
                     title: {
                         display: true,
-                        text: 'Índice (2008 = 100)',
-                        color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
+                        text: 'El Empobrecimiento Real de España: PIB Estancado vs Deuda Disparada (Euros Constantes 2015)',
+                        color: brandBlue,
                         font: {
-                            size: 15
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        padding: 20
+                    },
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: {
+                            color: '#666',
+                            font: {
+                                size: 14
+                            },
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        titleColor: '#333',
+                        bodyColor: '#666',
+                        borderColor: '#ddd',
+                        borderWidth: 1,
+                        padding: 15,
+                        displayColors: true,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 13
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed.y.toFixed(1);
+                                
+                                if (context.datasetIndex === 0) {
+                                    const cambio = context.parsed.y - 100;
+                                    label += ` (${cambio > 0 ? '+' : ''}${cambio.toFixed(1)}% vs 2008)`;
+                                } else {
+                                    const multiplicador = (context.parsed.y / 100).toFixed(1);
+                                    label += ` (×${multiplicador} vs 2008)`;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)',
+                            borderColor: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: false,
+                        min: 80,
+                        max: 320,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)',
+                            borderColor: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666',
+                            font: {
+                                size: 12
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Índice (2008 = 100)',
+                            color: '#666',
+                            font: {
+                                size: 14
+                            }
                         }
                     }
                 }
-            }
-        },
-        plugins: [{
-            // Plugin para añadir área sombreada entre las líneas con gradiente mejorado
-            beforeDatasetsDraw: function(chart) {
-                const ctx = chart.ctx;
-                const xAxis = chart.scales.x;
-                const yAxis = chart.scales.y;
-                const datasets = chart.data.datasets;
-                
-                ctx.save();
-                
-                // Crear gradiente más vibrante para el área
-                const gradient = ctx.createLinearGradient(0, yAxis.top, 0, yAxis.bottom);
-                gradient.addColorStop(0, 'rgba(255, 107, 107, 0.4)');
-                gradient.addColorStop(1, 'rgba(255, 107, 107, 0.1)');
-                
-                // Dibujar el área entre las dos líneas
-                ctx.beginPath();
-                
-                // Línea superior (deuda)
-                datasets[1].data.forEach((value, index) => {
-                    const x = xAxis.getPixelForValue(chart.data.labels[index]);
-                    const y = yAxis.getPixelForValue(value);
-                    if (index === 0) {
-                        ctx.moveTo(x, y);
-                    } else {
+            },
+            plugins: [{
+                // Plugin para añadir área sombreada entre las líneas
+                beforeDatasetsDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    const xAxis = chart.scales.x;
+                    const yAxis = chart.scales.y;
+                    const datasets = chart.data.datasets;
+                    
+                    ctx.save();
+                    
+                    // Crear gradiente para el área
+                    const gradient = ctx.createLinearGradient(0, yAxis.top, 0, yAxis.bottom);
+                    gradient.addColorStop(0, `${brandOrange}40`);
+                    gradient.addColorStop(1, `${brandOrange}10`);
+                    
+                    // Dibujar el área entre las dos líneas
+                    ctx.beginPath();
+                    
+                    // Línea superior (deuda)
+                    datasets[1].data.forEach((value, index) => {
+                        const x = xAxis.getPixelForValue(chart.data.labels[index]);
+                        const y = yAxis.getPixelForValue(value);
+                        if (index === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    });
+                    
+                    // Línea inferior (PIB) en orden inverso
+                    for (let i = datasets[0].data.length - 1; i >= 0; i--) {
+                        const x = xAxis.getPixelForValue(chart.data.labels[i]);
+                        const y = yAxis.getPixelForValue(datasets[0].data[i]);
                         ctx.lineTo(x, y);
                     }
-                });
-                
-                // Línea inferior (PIB) en orden inverso
-                for (let i = datasets[0].data.length - 1; i >= 0; i--) {
-                    const x = xAxis.getPixelForValue(chart.data.labels[i]);
-                    const y = yAxis.getPixelForValue(datasets[0].data[i]);
-                    ctx.lineTo(x, y);
+                    
+                    ctx.closePath();
+                    ctx.fillStyle = gradient;
+                    ctx.fill();
+                    
+                    ctx.restore();
                 }
-                
-                ctx.closePath();
-                ctx.fillStyle = gradient;
-                ctx.fill();
-                
-                ctx.restore();
-            }
-        }]
-    });
-
-    // Añadir animación a las métricas
-    const metricCards = document.querySelectorAll('.metric-card');
-    metricCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-
-    // Animar la sección de comparación de costes
-    const costComparison = document.querySelector('.cost-comparison');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '0';
-                entry.target.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    entry.target.style.transition = 'all 0.7s ease';
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, 200);
-                observer.unobserve(entry.target);
-            }
+            }]
         });
-    });
-    observer.observe(costComparison);
-</script>
-```
+    </script>
 
+    <style>
+        /* Estilos específicos de esta página */
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--brand-orange);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .year-column {
+            text-align: center;
+        }
+        
+        .year-header {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            color: white;
+        }
+        
+        .year-2008 {
+            background: #2e7d32;
+        }
+        
+        .year-2024 {
+            background: #d32f2f;
+        }
+        
+        .cost-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .cost-item {
+                background: #2a2a2a;
+            }
+        }
+        
+        .cost-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cost-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cost-value {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: var(--brand-blue);
+        }
+        
+        .cost-change {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--brand-orange);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .real-impact {
+            text-align: center;
+            background: rgba(255, 106, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--brand-orange);
+            margin-top: 2rem;
+        }
+        
+        .real-impact-value {
+            font-size: 2.5rem;
+            color: var(--brand-orange);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .next-analysis {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(10, 53, 95, 0.05), rgba(10, 53, 95, 0.1));
+            border: 2px solid var(--brand-blue);
+        }
+        
+        .next-analysis h3 {
+            color: var(--brand-blue);
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .cost-value {
+                font-size: 1.5rem;
+            }
+            
+            .year-header {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </body>
 </html>
