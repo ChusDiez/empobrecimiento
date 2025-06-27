@@ -125,7 +125,7 @@ p, li {
 }
 
 .nav-brand-image {
-  height: 44px;
+  height: 132px;
   width: auto;
   transition: transform 0.2s ease;
 }
@@ -371,7 +371,7 @@ footer {
   }
   
   .nav-brand-image {
-    height: 36px;
+    height: 108px;
   }
   
   .nav-link {
