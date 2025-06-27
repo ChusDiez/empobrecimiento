@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico GitHub Pages</title>
+    <link rel="stylesheet" href="theme.css?v=1.0">
+</head>
+<body>
+    <div class="container">
+        <h1>Diagnóstico de GitHub Pages</h1>
+        
+        <div class="card">
+            <h2>1. Prueba de CSS</h2>
+            <p>Si este texto es <span class="highlight">naranja</span> y el título es <span style="color: var(--brand-blue)">azul</span>, el CSS carga correctamente.</p>
+            <div class="metric-value">123</div>
+            <p class="metric-label">Si este número es grande y naranja, los estilos funcionan</p>
+        </div>
+        
+        <div class="card">
+            <h2>2. Variables CSS</h2>
+            <pre id="css-vars"></pre>
+        </div>
+        
+        <div class="card">
+            <h2>3. Rutas y URLs</h2>
+            <pre id="paths"></pre>
+        </div>
+        
+        <div class="card">
+            <h2>4. Chart.js</h2>
+            <p id="chartjs-status"></p>
+            <div style="position: relative; height: 300px;">
+                <canvas id="test-chart"></canvas>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>5. Errores de consola</h2>
+            <pre id="console-errors" style="color: red;"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script>
+        // Capturar errores
+        const errors = [];
+        window.onerror = function(msg, url, line) {
+            errors.push(`Error: ${msg} en ${url}:${line}`);
+            document.getElementById('console-errors').textContent = errors.join('\n');
+        };
+
+        // Verificar CSS
+        const styles = getComputedStyle(document.documentElement);
+        const cssVars = {
+            'brand-blue': styles.getPropertyValue('--brand-blue'),
+            'brand-orange': styles.getPropertyValue('--brand-orange'),
+            'bg-light': styles.getPropertyValue('--bg-light'),
+            'font-family': styles.getPropertyValue('--ff-body')
+        };
+        document.getElementById('css-vars').textContent = JSON.stringify(cssVars, null, 2);
+
+        // Mostrar rutas
+        const paths = {
+            'URL actual': window.location.href,
+            'Pathname': window.location.pathname,
+            'Origen': window.location.origin,
+            'Base URL': document.baseURI,
+            'CSS href': document.querySelector('link[rel="stylesheet"]')?.href
+        };
+        document.getElementById('paths').textContent = JSON.stringify(paths, null, 2);
+
+        // Verificar Chart.js
+        const chartStatus = document.getElementById('chartjs-status');
+        if (typeof Chart !== 'undefined') {
+            chartStatus.textContent = '✅ Chart.js cargado correctamente. Versión: ' + Chart.version;
+            
+            // Crear gráfico de prueba
+            const ctx = document.getElementById('test-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr'],
+                    datasets: [{
+                        label: 'Test',
+                        data: [10, 20, 15, 25],
+                        borderColor: '#ff6a00',
+                        backgroundColor: 'rgba(255, 106, 0, 0.2)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        } else {
+            chartStatus.textContent = '❌ Chart.js NO está cargado';
+        }
+
+        // Log adicional
+        console.log('=== DIAGNÓSTICO COMPLETO ===');
+        console.log('CSS Variables:', cssVars);
+        console.log('Paths:', paths);
+        console.log('Chart.js:', typeof Chart !== 'undefined' ? 'Cargado' : 'No cargado');
+        console.log('Errores:', errors);
+    </script>
+</body>
+</html>
