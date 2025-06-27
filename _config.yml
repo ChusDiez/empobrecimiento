@@ -1,0 +1,16 @@
+# Configuración de GitHub Pages
+baseurl: "" # Deja vacío si usas usuario.github.io/repositorio
+url: "" 
+
+# Excluir archivos del procesamiento
+exclude:
+  - README.md
+  - .gitignore
+
+# No procesar estos archivos con Jekyll
+keep_files:
+  - theme.css
+  - "*.html"
+
+# Forzar UTF-8
+encoding: UTF-8
