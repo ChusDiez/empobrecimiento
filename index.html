@@ -340,16 +340,28 @@
 <body>
     <nav class="nav-bar">
         <div class="nav-container container">
-            <a href="./index.html" class="nav-brand">📊 Análisis Económico España</a>
-            <div class="nav-links">
-                <a href="./index.html" class="nav-link active">Inicio</a>
-                <a href="./espana.html" class="nav-link">Empobrecimiento</a>
-                <a href="./divergencia.html" class="nav-link">Comparación Internacional</a>
-            </div>
-        </div>
-    </nav>
+            <!-- Opción 1: Logo como texto estilizado (recomendado) -->
+            <a href="https://chusdiez.com" class="nav-brand">
+                <div class="nav-brand-main">CHUSDIEZ.COM</div>
+                <div class="nav-brand-tagline">Análisis Económico</div>
+            </a>
 
 ```
+        <!-- Opción 2: Si tienes archivo de imagen del logo -->
+        <!-- 
+        <a href="https://chusdiez.com" class="nav-brand-image-container">
+            <img src="./logo-chusdiez.svg" alt="ChusDiez.com" class="nav-brand-image">
+        </a>
+        -->
+        
+        <div class="nav-links">
+            <a href="./index.html" class="nav-link active">Inicio</a>
+            <a href="./espana.html" class="nav-link">Empobrecimiento</a>
+            <a href="./divergencia.html" class="nav-link">Comparación Internacional</a>
+        </div>
+    </div>
+</nav>
+
 <div class="hero">
     <div class="container">
         <h1>El Empobrecimiento de España</h1>
