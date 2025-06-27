@@ -40,14 +40,15 @@ html {
 }
 
 body {
-  background: var(--bg-light);
-  color: var(--text-dark);
+  background: #fefefe;
+  color: #212121;
   font-family: var(--ff-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Modo oscuro solo si el usuario lo pide explícitamente 
 @media (prefers-color-scheme: dark) {
   body {
     background: var(--bg-dark);
@@ -61,12 +62,12 @@ body {
   h1, h2, h3 {
     color: var(--text-light) !important;
   }
-}
+} */
 
 /* TYPOGRAPHY */
 h1 {
-  font-size: 2rem;
-  margin: 1.2rem 0;
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
   color: var(--brand-blue);
   font-weight: 800;
   line-height: 1.2;
@@ -87,9 +88,11 @@ h3 {
 }
 
 p, li {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   max-width: 68ch;
   margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #333;
 }
 
 /* NAVBAR */
@@ -122,7 +125,7 @@ p, li {
 }
 
 .nav-brand-image {
-  height: 88px;
+  height: 44px;
   width: auto;
   transition: transform 0.2s ease;
 }
@@ -153,6 +156,7 @@ p, li {
   background: rgba(255, 106, 0, 0.1);
 }
 
+/* Comentado el modo oscuro del navbar
 @media (prefers-color-scheme: dark) {
   .nav-bar {
     background: rgba(18, 18, 18, 0.98);
@@ -166,7 +170,7 @@ p, li {
   .nav-brand-image {
     filter: brightness(0) invert(1);
   }
-}
+} */
 
 /* LAYOUT */
 section, header, footer, .container {
@@ -178,28 +182,31 @@ section, header, footer, .container {
 .hero {
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-sm);
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fff7f0 100%);
   margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 106, 0, 0.1);
 }
 
+/* Comentado el modo oscuro del hero
 @media (prefers-color-scheme: dark) {
   .hero {
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   }
-}
+} */
 
 /* CARDS & COMPONENTS */
 .card {
-  background: var(--bg-light);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   padding: var(--spacing-md);
   margin: var(--spacing-md) 0;
   transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .metric-card {
@@ -208,10 +215,11 @@ section, header, footer, .container {
 }
 
 .metric-value {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.75rem;
+  font-weight: 800;
   color: var(--brand-orange);
   margin: var(--spacing-xs) 0;
+  text-shadow: 0 2px 8px rgba(255, 106, 0, 0.15);
 }
 
 .metric-label {
@@ -224,20 +232,21 @@ section, header, footer, .container {
 /* BUTTONS & LINKS */
 .view-button, .cta-button {
   display: inline-block;
-  padding: 0.75rem 2rem;
+  padding: 0.875rem 2.25rem;
   background: var(--brand-orange);
   color: white;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 30px;
   font-weight: 600;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(255, 106, 0, 0.2);
+  font-size: 1.0625rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 106, 0, 0.25);
 }
 
 .view-button:hover, .cta-button:hover {
-  background: #e55a00;
+  background: #ff5500;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 106, 0, 0.3);
+  box-shadow: 0 6px 25px rgba(255, 106, 0, 0.35);
 }
 
 /* CHARTS */
@@ -250,11 +259,12 @@ section, header, footer, .container {
   min-height: 400px;
 }
 
+/* Comentado el modo oscuro
 @media (prefers-color-scheme: dark) {
   .chart-container {
     background: #1a1a1a;
   }
-}
+} */
 
 /* IMAGES */
 img {
@@ -300,19 +310,20 @@ img {
 
 /* FOOTER */
 footer {
-  background: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background: linear-gradient(180deg, #fafbfc 0%, #f5f7fa 100%);
+  border-top: 2px solid rgba(255, 106, 0, 0.1);
   padding: var(--spacing-lg) var(--spacing-sm);
   margin-top: var(--spacing-xl);
   text-align: center;
 }
 
+/* Comentado el modo oscuro
 @media (prefers-color-scheme: dark) {
   footer {
     background: #1a1a1a;
     border-top-color: #333;
   }
-}
+} */
 
 .source-note {
   font-size: 0.875rem;
@@ -360,7 +371,7 @@ footer {
   }
   
   .nav-brand-image {
-    height: 72px;
+    height: 36px;
   }
   
   .nav-link {
