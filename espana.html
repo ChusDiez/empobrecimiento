@@ -474,62 +474,7 @@
             .year-header {
                 font-size: 1.5rem;
             }
-        }
-        /* Mejora general de contraste en métricas */
-.metric-card .metric-value {
-    color: #ffffff; /* Cambia a blanco para alto contraste en fondos oscuros */
-    /* O alternativamente, un azul más claro: color: #4a90e2; */
-}
-
-/* Para el grid de comparación */
-.cost-item .cost-value {
-    color: #ffffff; /* Blanco para mejor legibilidad */
-    /* O un azul más vivo: color: #007bff; */
-}
-
-.cost-change {
-    background: #ff6a00; /* Mantén el naranja, pero asegúrate de que el texto sea blanco (ya lo es) */
-}
-
-/* Ajustes específicos para modo oscuro (si usas prefers-color-scheme) */
-@media (prefers-color-scheme: dark) {
-    .card, .metric-card, .cost-item {
-        background: #3a3a3a; /* Fondo un poco más claro que #2a2a2a para reducir oscuridad extrema */
-        /* O usa un gris medio: background: #4d4d4d; */
-        color: #e0e0e0; /* Texto general más claro */
-    }
-    
-    .metric-value, .cost-value {
-        color: #ffffff !important; /* Fuerza blanco en dark mode */
-    }
-    
-    .year-2008 {
-        background: #4caf50; /* Verde más claro para mejor visibilidad */
-    }
-    
-    .year-2024 {
-        background: #f44336; /* Rojo más vivo */
-    }
-    
-    .real-impact {
-        background: rgba(255, 106, 0, 0.2); /* Aumenta opacidad para más contraste */
-        border-color: #ff6a00;
-    }
-}
-
-/* Opcional: Si quieres fondos más claros en general (sin depender de dark mode) */
-.metrics-grid .card,
-.comparison-grid .cost-item {
-    background: #ffffff; /* Fondo blanco forzado */
-    border: 1px solid #ddd; /* Agrega borde para definición */
-}
-
-@media (prefers-color-scheme: dark) {
-    .metrics-grid .card,
-    .comparison-grid .cost-item {
-        background: #333333; /* Gris oscuro pero no negro */
-        border: 1px solid #555;
-    }
+        
 }
     </style>
 </body>
